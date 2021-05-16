@@ -39,7 +39,7 @@ Route::prefix('profs')->group(function(){
     });
     //élèves
     Route::prefix('elevess')->group(function(){
-        
+
         Route::get('eleves',function(){
             return view('eleves');
         })->name('eleves');
@@ -64,15 +64,15 @@ Route::prefix('profs')->group(function(){
         Route::resource('/classe', ClasseController::class);
        //Annee
        Route::resource('/annee', AnneeController::class);
-       Route::get('annee/{annee}/classes',[AnneeController::class,'classes']);
+       Route::get('annee/{annee}/classes',[AnneeController::class,'classes'])->name('annee.classes');
 
 
          Route::get('full-calender', [FullCalenderController::class, 'index']);
 
          Route::post('full-calender/action', [FullCalenderController::class, 'action']);
-            
-            
+
+
     // this is just for demo purpose
     // Route::get('sample',[elevessController::class, 'demo'])->name('demo.sample');
-    
+
     // try school.test/sample, it should show sample.blade.php
