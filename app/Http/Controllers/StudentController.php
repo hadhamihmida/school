@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\eleves;
 use App\Models\parents;
+use App\Models\Annee;
+
 
 class StudentController extends Controller
 {
@@ -19,9 +21,10 @@ class StudentController extends Controller
 
    public function ajoute(){
 
+     $annees = Annee::all();
      $parents= parents::all();
      
-      return view('elevesajoute',compact('parents'));
+      return view('elevesajoute',compact('parents','annees'));
    
        }
 
@@ -38,11 +41,11 @@ class StudentController extends Controller
     $data -> parent_id = $request-> parent_id;
     
 
-  // if ($request -> file('image')){
-      //$image = $request->file('image');
-      // $imagename = date('YmdHi').$image->getClientOriginalName();
-     // $image->move(public_path('upload'), $imagename);
-      // $data['image']= $imagename;
+   if ($request -> file('image')){
+      $image = $request->file('image');
+      $imagename = date('YmdHi').$image->getClientOriginalName();
+     $image->move(public_path('upload'), $imagename);
+       $data['image']= $imagename;
     }
    $data->save();
 

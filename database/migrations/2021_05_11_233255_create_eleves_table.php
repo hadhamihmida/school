@@ -17,15 +17,13 @@ class CreateElevesTable extends Migration
             $table->id();
             $table->string('nom_el');
             $table->string('prenom_el');
-            $table->string('adresse_el');
-            $table->string('email_pr');
             $table->date('date_naiss');
-            $table->string('nom_pr');
-            $table->string('classe');
             $table->text('image')->nullable();
             $table->bigInteger('parent_id')->unsigned();
+            $table->bigInteger('classe_id')->unsigned();
             $table->timestamps();
             $table->foreign('parent_id')->references('id')->on('parents')->onDelete('cascade');
+            $table->foreign('classe_id')->references('id')->on('classes')->onDelete('cascade');
         });
     }
 

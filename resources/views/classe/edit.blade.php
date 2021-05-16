@@ -45,7 +45,24 @@
               <label for="numérotation">Numérotation</label>
               <input type="int" class="form-control" name="numérotation" value="{{ $classe->numérotation }}"/>
           </div>
-         
+
+          <div class="form-group col-md-4">
+        <select class="form-control" name="annee_id">
+        <option value="" >Select</option>
+      
+         @foreach($annees as $annee)
+         <option value="{{ $annee->id  }}" {{$classe->annee_id == $annee->id ? 'selected':''}}>
+          {{$annee->nom}}
+         </option>
+         @endforeach
+        </select>
+
+
+    </div>
+
+
+
+
          
           <button type="submit" class="btn btn-block btn-danger">mettre à jour</button>
       </form>

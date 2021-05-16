@@ -23,9 +23,19 @@
          @endforeach
         </select>
 
+
     </div>
 
-
+    <div class="form-group col-md-4">
+        <select class="form-control" name="annee_id">
+        <option value="">Select Annee</option>
+         @foreach($annees as $annee)
+         <option value="{{ $annee->id}}">
+          {{$annee->nom }}
+         </option>
+         @endforeach
+        </select>
+        </div>
 
     <div class="form-group col-md-4">
       <input name="prenom_el"   type="text" class="form-control"  placeholder=" prenom_élève">
@@ -68,4 +78,11 @@
 
     <!-- /.content -->
 
+    @endsection
+    @section('scripts')
+    <script>
+      $(body).on('change','#annee_id',function(e){
+        console.log(e.target.value)
+      });
+    </script>
     @endsection

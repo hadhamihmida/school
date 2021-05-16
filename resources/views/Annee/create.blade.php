@@ -26,29 +26,13 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('classe.store') }}">
+      <form method="post" action="{{ route('annee.store') }}">
           <div class="form-group">
               @csrf
-              <label for="capaciter">Capaciter</label>
-              <input type="int" class="form-control" name="capaciter"/>
+              <label for="capaciter">Nom</label>
+              <input type="text" class="form-control" name="nom"/>
           </div>
-          <div class="form-group">
-              <label for="numérotation">Numérotation</label>
-              <input type="int" class="form-control" name="numérotation"/>
-          </div>
-
-          <div class="form-group col-md-4">
-        <select class="form-control" name="annee_id">
-         @foreach($annees as $annee)
-         <option value="{{ $annee->id  }}">
-          {{$annee->nom}}
-         </option>
-         @endforeach
-        </select>
-
-    </div>
-
-
+         
           
           <button type="submit" class="btn btn-block btn-danger">Enregistrer</button>
       </form>

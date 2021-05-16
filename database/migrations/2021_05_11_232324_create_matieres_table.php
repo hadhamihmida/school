@@ -16,10 +16,11 @@ class CreateMatieresTable extends Migration
         Schema::create('matieres', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->string('professeur');
             $table->integer('niveau')->unsigned()->index();
             $table->integer('nombre')->unsigned()->index();
+            $table->bigInteger('annee_id')->unsigned();
             $table->timestamps();
+            $table->foreign('annee_id')->references('id')->on('annees')->onDelete('cascade');
         });
     }
 

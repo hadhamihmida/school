@@ -19,14 +19,15 @@ class ParentController extends Controller{
      
          public function store(Request $request){
             
-            $data = new Parents();
-            $data -> nom_pr = $request->nom_pr;
-            $data -> prenom_pr = $request->prenom_pr;
-            $data -> email = $request->email;
-            $data -> cin = $request->cin;
-            $data -> tel = $request->tel;
-            $data -> nombre = $request->nombre;  
-            $data->save();
+             $data = new Parents();
+             $data -> nom_pr = $request->nom_pr;
+             $data -> prenom_pr = $request->prenom_pr;
+             $data -> email = $request->email;
+             $data -> cin = $request->cin;
+             $data -> tel = $request->tel;
+             $data -> nombre = $request->nombre;  
+             $data->save();
+            //Parents::create($request->all());
      
             $notification = array(
                 'message'=>'Insertion avec succées!',

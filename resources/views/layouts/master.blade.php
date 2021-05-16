@@ -192,6 +192,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Classe</p>
                                     </a>
+
+                                    <a href="{{route('annee.index')}}" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Liste des classes</p>
+                                    </a>
                                 </li>
                         </li>
                     </ul>
@@ -295,7 +300,7 @@ $(document).ready( function () {
                        break;
         }
       @endif
-
+@yield('scripts')
 </script>
 {{-- sweet Alert --}}
 

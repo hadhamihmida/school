@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classe;
 use Illuminate\Http\Request;
+use App\Models\Annee;
 
 class ClasseController extends Controller
 {
@@ -14,7 +15,8 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        $classe = Classe::all();
+        $classe = Classe::all()->load('annee');
+        
         return view('classe.index', compact('classe'));
     }
 
@@ -25,7 +27,9 @@ class ClasseController extends Controller
      */
     public function create()
     {
-        return view('classe.create');
+        $annees = Annee::all();
+        return view('classe.create',compact('annees'));
+        
     }
 
     /**
@@ -39,6 +43,7 @@ class ClasseController extends Controller
         $request->validate([
             'capaciter' => 'required',
             'numérotation' => 'required',
+            'annee_id' => 'required',
             
         ]);
 
@@ -68,7 +73,8 @@ class ClasseController extends Controller
     public function edit($id)
     {
         $classe = Classe::findOrFail($id);
-        return view('classe.edit', compact('classe'));
+        $annees =Annee::all();
+        return view('classe.edit', compact('classe','annees'));
     }
 
     /**
@@ -83,7 +89,7 @@ class ClasseController extends Controller
         $request->validate([
             'capaciter' => 'required',
             'numérotation' => 'required',
-            
+            'annee_id' => 'required',
         ]);
 
         $classe->update($request->all());

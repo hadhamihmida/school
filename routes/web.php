@@ -8,6 +8,7 @@ use App\Http\Controllers\MatiereController;
 // you didnot add calender class here
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\AnneeController;
 /*
 
 /*
@@ -61,6 +62,10 @@ Route::prefix('profs')->group(function(){
         Route::resource('/matiere', MatiereController::class);
         //classe
         Route::resource('/classe', ClasseController::class);
+       //Annee
+       Route::resource('/annee', AnneeController::class);
+       Route::get('annee/{annee}/classes',[AnneeController::class,'classes']);
+
 
          Route::get('full-calender', [FullCalenderController::class, 'index']);
 

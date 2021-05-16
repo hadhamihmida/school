@@ -10,7 +10,7 @@ class parents extends Model
 {
     use HasFactory;
    
-
+    protected $fillabel=['nom_pr','prenom_pr','email','tel','adresse','nombre'];
     public function students()
     {
         return $this->hasMany(eleves::class);
