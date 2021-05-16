@@ -7,12 +7,20 @@
         </div>
            <div class="card-body">
 
- <form methode="post" action="{{ route('store.Student') }}" enctype="multipart/form-data">
+ <form method="post" action="{{ route('store.Student') }}" enctype="multipart/form-data">
   @csrf
   <div class="form-row">
     <div class="form-group col-md-4">
       <input name="nom_el" type="text" class="form-control"  placeholder=" nom_élève">
     </div>
+
+      <div class="form-group col-md-4">
+          <input name="prenom_el"   type="text" class="form-control"  placeholder=" prenom_élève">
+      </div>
+
+      <div class="form-group col-md-4" >
+          <input   name="date_naiss" type="date" class="form-control"  placeholder="Date_Naissance">
+      </div>
 
     <div class="form-group col-md-4">
         <select class="form-control" name="parent_id">
@@ -41,30 +49,6 @@
           <select class="form-control" id="classe_id" name="classe_id">
               <option value="">Select Classe</option>
           </select>
-      </div>
-
-    <div class="form-group col-md-4">
-      <input name="prenom_el"   type="text" class="form-control"  placeholder=" prenom_élève">
-    </div>
-
-    <div class="form-group col-md-4" >
-                    <input   name="date_naiss" type="date" class="form-control"  placeholder="Date_Naissance">
-              </div>
-
-    <div class=" form-group col-md-4">
-      <input   name="adresse_el"        type="text" class="form-control"   placeholder=" adresse_élève">
-    </div>
-
-       <div class=" form-group col-md-4">
-         <input name="classe"      type="text" class="form-control"  placeholder=" classe_élève">
-      </div>
-
-       <div class="col-md-4">
-          <input name="nom_pr"     type="text" class="form-control"  placeholder=" nom_parent">
-       </div>
-
-      <div class="form-group col-md-4">
-         <input  name="email_pr"   type="text" class="form-control"  placeholder=" email-parent">
       </div>
 
        <div class=" form-group col-md-6">

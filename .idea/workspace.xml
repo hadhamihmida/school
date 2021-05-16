@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56fc943a-d3f0-48c5-b9e6-6a9b24716bcc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/partials/aside.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/partials/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ParentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ParentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/eleves.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/eleves.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/parents.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/parents.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Parents-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Parents-view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Parentsajoute.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Parentsajoute.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/elevesajoute.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/elevesajoute.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/elevess-eleve.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/elevess-eleve.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,7 +163,8 @@
       <option name="presentableId" value="Default" />
       <updated>1621080095592</updated>
       <workItem from="1621080182426" duration="1197000" />
-      <workItem from="1621165529029" duration="2338000" />
+      <workItem from="1621165529029" duration="4354000" />
+      <workItem from="1621172605054" duration="3117000" />
     </task>
     <servers />
   </component>
@@ -176,5 +181,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

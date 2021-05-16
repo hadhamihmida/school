@@ -9,15 +9,13 @@
                 </div>
 
                    <div class="card-body">
-                        <table id="myTable" class=" table table-striped table-bordered" style="width: 70%">
+                        <table id="myTable" class=" table table-striped table-bordered" >
                             <thead>
                                 <tr>
                                    <th style="font: size 13px">id</th>
                                    <th style="font: size 13px">nom</th>
                                    <th style="font: size 13px">prenom</th>
                                    <th style="font: size 13px">email</th>
-                                   <th style="font: size 13px">nom_E</th>
-                                   <th style="font: size 13px">prenom_E</th>
                                    <th style="font: size 13px">cin</th>
                                    <th style="font: size 13px">tel</th>
                                    <th style="font: size 13px">nombre</th>
@@ -29,13 +27,11 @@
                                      <td>{{ $data->nom_pr }}</td>
                                      <td>{{ $data->prenom_pr }}</td>
                                      <td>{{ $data->email }}</td>
-                                     <td>{{ $data->nom_el }}</td>
-                                     <td>{{ $data->prenom_el}}</td>
                                      <td>{{ $data->cin }}</td>
                                      <td>{{ $data->tel }}</td>
                                      <td>{{ $data->nombre }}</td>
-                                  
-                              <td>            
+
+                              <td>
                                    <a title="Edit" class="btn btn-sm btn-primary" href="{{ route('edit.Parent' ,$data->id ) }}">Modifier</a>
                                   <a title="Delete"  id="delete" class="btn btn-sm btn-danger" href="{{ route('delete.Parent', $data->id) }}">Supprimer</a>
                               </td>

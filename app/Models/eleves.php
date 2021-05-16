@@ -11,8 +11,15 @@ class eleves extends Model
 {
     use HasFactory;
 
-   protected $fillabel =['nom-el', 'prenom_el', 'date_naiss', 'image','parent_id','classe_id'];
-
+   protected $fillabel =[
+       'nom_el',
+       'prenom_el',
+       'date_naiss',
+       'image',
+       'parent_id',
+       'classe_id',
+       ];
+    protected $guarded=[];
     public function parent()
     {
         return $this->belongsTo(parents::class);
@@ -22,5 +29,5 @@ class eleves extends Model
     {
         return $this->belongsTo(Classe::class);
     }
-    
+
 }

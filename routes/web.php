@@ -44,7 +44,7 @@ Route::prefix('profs')->group(function(){
             return view('eleves');
         })->name('eleves');
         Route::get('eleve',[StudentController::class, 'eleve'])->name('eleve.Student');
-        Route::get('store',[StudentController::class, 'store'])->name('store.Student');
+        Route::post('store',[StudentController::class, 'store'])->name('store.Student');
         Route::get('ajoute',[StudentController::class, 'ajoute'])->name('ajoute.Student');
         Route::get('delete/{id}',[StudentController::class,'delete'])->name('delete.Student');
         Route::get('edit/{id}',[StudentController::class,'edit'])->name('edit.Student');
@@ -53,8 +53,8 @@ Route::prefix('profs')->group(function(){
     Route::prefix('Parents')->group(function(){
         Route::get('/view',[ParentController::class,'view'])->name('view.Parent');
         Route::get('/ajoute',[ParentController::class,'ajoute'])->name('ajoute.Parent');
-        Route::get('/store',[ParentController::class,'store'])->name('store.Parent');
-        Route::get('update/{id}',[ParentController::class,'update'])->name('update.Parent');
+        Route::post('/store',[ParentController::class,'store'])->name('store.Parent');
+        Route::post('update/{parent}',[ParentController::class,'update'])->name('update.Parent');
         Route::get('delete/{id}',[ParentController::class,'delete'])->name('delete.Parent');
         Route::get('edit/{id}',[ParentController::class,'edit'])->name('edit.Parent');
         });
