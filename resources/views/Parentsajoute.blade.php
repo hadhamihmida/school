@@ -36,6 +36,10 @@
                          <label for="inputTel">Tel</label>
                         <input type="int" name="tel"  value="{{ (@$editData->tel) }}"       class="form-control" placeholder="Tel">
                    </div>
+                   <div class="form-group col-md-6">
+                         <label for="inputTel">Adresse</label>
+                        <input type="text" name="adresse"  value="{{ (@$editData->adresse) }}"       class="form-control" placeholder="adresse">
+                   </div>
                        <div class="form-group col-md-4">
                              <label for="inputnombre">nombre</label>
                              <input type="int"  name="nombre"  value="{{ (@$editData->nombre) }}"    class="form-control"  placeholder="ajouter nomber des enfants" >
