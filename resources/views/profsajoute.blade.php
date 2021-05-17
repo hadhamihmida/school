@@ -10,7 +10,7 @@
     </div>
 
     <div class="card-body">
-      <form methode="post" action="{{ (@$editData)?route('update.profs', $editData->id): route('store.profs') }}" enctype="multipart/from-data">
+      <form methode="post" action="{{ (@$editData)?route('update.profs', @$editData->id): route('store.profs') }}" enctype="multipart/from-data">
         @csrf
         <div class="form-row">
           <div class="form-group col-md-6">
@@ -22,10 +22,7 @@
             <input type="text" name="prenom" value="{{ (@$editData->prenom) }}" class="form-control" placeholder="Prenom">
           </div>
         </div>
-        <div class="form-group">
-          <label for="inputSpecialite">Specialite</label>
-          <input type="text" name="specialite" value="{{ (@$editData->specialite) }}" class="form-control" placeholder="Specialite">
-        </div>
+        
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputCin">Cin</label>
@@ -46,11 +43,26 @@
           <input type="text" name="adresse" value="{{ (@$editData->adresse) }}" class="form-control" placeholder="Adresse">
         </div>
         </div>
-        <div class="form-row">
+
+      <div class="form-row">
+
         <div class="form-group col-md-6">
           <label for="inputTel">Tel</label>
           <input type="int" name="tel" value="{{ (@$editData->tel) }}" class="form-control" placeholder="Tel">
         </div>
+
+        <div class="form-group col-md-4">
+        <select class="form-control" id="matiere_id" name="matiere_id">
+        <option value="">Select Matiere</option>
+         @foreach($matieres as $matiere)
+         <option value="{{ $matiere->id }}" {{ (@$editData->matiere_id)==$matiere->id ? 'selected': ''}}>
+          {{$matiere->nom }}
+         </option>
+         @endforeach
+        </select>
+    </div>
+      
+     </div>
         <div class="form-group col-md-4">
           <label for="inputExperience">Experience</label>
           <input type="int" name="experience" value="{{ (@$editData->experience) }}" class="form-control" placeholder="Experiences">

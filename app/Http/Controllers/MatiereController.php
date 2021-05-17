@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Matieres;
+use App\Models\Annee;
 
 class MatiereController extends Controller
 {
@@ -15,7 +16,7 @@ class MatiereController extends Controller
     public function index()
     {
        
-         $matiere = Matieres::all();
+         $matiere = Matieres::all()->load('annee');
         return view('matiere.index', compact('matiere'));
 
     }
@@ -27,8 +28,8 @@ class MatiereController extends Controller
      */
     public function create()
     {
-        
-            return view('matiere.create');
+            $annees = Annee::all();
+            return view('matiere.create',compact('annees'));
     }
 
     /**
@@ -41,9 +42,8 @@ class MatiereController extends Controller
     {
         $request->validate([
             'nom' => 'required',
-            'professeur' => 'required',
-            'niveau' => 'required',
             'nombre' => 'required',
+            'annee_id'=> 'required',
         ]);
 
        Matieres::create($request->all());
@@ -72,8 +72,10 @@ class MatiereController extends Controller
     public function edit($id)
     {
         //return $matiere;
+
          $matiere = Matieres::findOrFail($id);
-        return view('matiere.edit', compact('matiere'));
+         $annees =Annee::all();
+        return view('matiere.edit', compact('matiere','annees'));
     }
 
     /**
@@ -87,9 +89,8 @@ class MatiereController extends Controller
     {
          $request->validate([
         'nom' => 'required',
-        'professeur' => 'required',
-        'niveau' => 'required',
         'nombre' => 'required',
+        'annee_id' => 'required',
     ]);
 
     $matiere->update($request->all());

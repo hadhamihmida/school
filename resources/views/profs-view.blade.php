@@ -16,10 +16,11 @@
                                    <th style="font: size 13px">nom</th>
                                    <th style="font: size 13px">prenom</th>
                                    <th style="font: size 13px">email</th>
-                                   <th style="font: size 13px">specialite</th>
                                    <th style="font: size 13px">cin</th>
+                                   <th style="font: size 13px">Matiere</th>
                                    <th style="font: size 13px">date_naissance</th>
                                    <th style="font: size 13px">adresse</th>
+                                   <th style="font: size 13px">Experience</th>
                                    <th style="font: size 13px">tel</th>
                                    <th style="font: size 13px">action</th>
                               </tr>
@@ -28,11 +29,12 @@
                                      <td>{{ $key+1 }}</td>
                                      <td>{{ $data->nom }}</td>
                                      <td>{{ $data->prenom }}</td>
-                                     <td>{{ $data->email }}</td>
-                                     <td>{{ $data->specialite }}</td>
+                                     <td>{{ $data->email }}</th>
                                      <td>{{ $data->cin }}</td>
+                                     <td> {{  $data->matiere->nom}}</td>
                                      <td>{{ $data->date_naissance }}</td>
                                      <td>{{ $data->adresse }}</td>
+                                     <td>{{ $data->experience}}</td>
                                      <td>{{ $data->tel }}</td>
                                   
                               <td>            

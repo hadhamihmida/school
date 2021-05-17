@@ -19,21 +19,16 @@
                 {{ $matiere->nom }}
             </div>
         </div>
+        
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Details:</strong>
-                {{ $matiere->professeur }}
+                <strong>Niveau:</strong>
+                {{ $matiere->annee->nom }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Details:</strong>
-                {{ $matiere->niveau }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Details:</strong>
+                <strong>Nombre</strong>
                 {{ $matiere->nombre }}
             </div>
         </div>

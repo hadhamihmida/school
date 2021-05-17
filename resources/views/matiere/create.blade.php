@@ -26,18 +26,25 @@
               <label for="nom">Nom</label>
               <input type="text" class="form-control" name="nom"/>
           </div>
-          <div class="form-group">
-              <label for="professeur">professeur</label>
-              <input type="text" class="form-control" name="professeur"/>
-          </div>
-          <div class="form-group">
-              <label for="niveau">Niveau</label>
-              <input type="int" class="form-control" name="niveau"/>
-          </div>
+      
           <div class="form-group">
               <label for="nombre">nombre</label>
               <input type="int" class="form-control" name="nombre"/>
           </div>
+
+          <div class="form-group col-md-4">
+        <select class="form-control" name="annee_id">
+         @foreach($annees as $annee)
+         <option value="{{ $annee->id  }}">
+          {{$annee->nom}}
+         </option>
+         @endforeach
+        </select>
+
+    </div>
+
+
+
           <button type="submit" class="btn btn-block btn-danger">Enregistrer</button>
       </form>
   </div>

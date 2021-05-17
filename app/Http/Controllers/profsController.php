@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Models\profs; // wrong
-use App\Models\Profs;
+ use App\Models\profs;
+ // wrong
+use App\Models\Matieres;
 
 class profsController extends Controller
 {
     public function ajoute(){
-
-   return view('profsajoute');
+ 
+     $matieres = Matieres::all();  
+   return view('profsajoute',compact('matieres'));
 
     }
 
@@ -20,12 +22,13 @@ class profsController extends Controller
        $data -> nom = $request->nom;
        $data -> prenom = $request->prenom;
        $data -> email = $request->email;
-       $data -> specialite = $request->specialite;
        $data -> cin = $request->cin;
        $data -> adresse = $request->adresse;
        $data -> date_Naissance = $request->date_naissance;
        $data -> tel = $request->tel;  
        $data -> experience = $request->experience; 
+       $data -> matiere_id = $request->matiere_id;
+       
        $data->save();
 
        $notification = array(
@@ -39,7 +42,7 @@ class profsController extends Controller
     
     public function view(){
 
-        $allData = profs::all();
+        $allData = profs::all()->load('matiere');
         return view('profs-view',compact('allData'));
     }
     
@@ -59,9 +62,9 @@ class profsController extends Controller
     }
 
     public function edit( $id){
-
+        $matieres = Matieres::all();
         $editData = profs::where('id',$id)->first();
-        return view('profsajoute', compact('editData'));
+        return view('profsajoute', compact('editData','matieres'));
 
     }
 
@@ -72,11 +75,11 @@ class profsController extends Controller
        $data->nom=$request->nom;
        $data->prenom=$request->prenom;
        $data->email=$request->email;
-       $data->specialite=$request->specialite;
        $data->cin=$request->cin;
        $data->adresse=$request->adresse;
        $data->date_naissance=$request->date_naissance;
        $data->tel=$request->tel;
+       $data ->matiere_id =$request->matiere_id;
        $data->save();
 
        $notification = array(

@@ -29,9 +29,8 @@
         <tr class="table-warning">
           <td>ID</td>
           <td>Nom</td>
-          <td>professeurs</td>
-          <td>Niveau</td>
           <td>Nombre</td>
+          <td>Niveau</td>
           <td class="text-center">Action</td>
         </tr>
     </thead>
@@ -40,9 +39,8 @@
         <tr>
             <td>{{$matiere->id}}</td>
             <td>{{$matiere->nom}}</td>
-            <td>{{$matiere->professeur}}</td>
-            <td>{{$matiere->niveau}}</td>
             <td>{{$matiere->nombre}}</td>
+            <td> {{  $matiere->annee->nom}}</td>
             <td class="text-center">
                 <form action="{{ route('matiere.destroy', $matiere->id) }}" method="post" style="display: inline-block">
                 

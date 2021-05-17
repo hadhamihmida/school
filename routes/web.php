@@ -45,10 +45,12 @@ Route::prefix('profs')->group(function(){
         })->name('eleves');
         Route::get('eleve',[StudentController::class, 'eleve'])->name('eleve.Student');
         Route::post('store',[StudentController::class, 'store'])->name('store.Student');
+        Route::post('update/{eleve}',[StudentController::class, 'update'])->name('update.Student');
         Route::get('ajoute',[StudentController::class, 'ajoute'])->name('ajoute.Student');
         Route::get('delete/{id}',[StudentController::class,'delete'])->name('delete.Student');
-        Route::get('edit/{id}',[StudentController::class,'edit'])->name('edit.Student');
+        Route::get('edit/{id}',[StudentController::class, 'edit'])->name('edit.Student');
     });
+    
     //parents
     Route::prefix('Parents')->group(function(){
         Route::get('/view',[ParentController::class,'view'])->name('view.Parent');
@@ -66,10 +68,10 @@ Route::prefix('profs')->group(function(){
        Route::resource('/annee', AnneeController::class);
        Route::get('annee/{annee}/classes',[AnneeController::class,'classes'])->name('annee.classes');
 
-
-         Route::get('full-calender', [FullCalenderController::class, 'index']);
-
-         Route::post('full-calender/action', [FullCalenderController::class, 'action']);
+     //calendreier
+     Route::get('fullcalender', [FullCalenderController::class, 'index']);
+     Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
+         
 
 
     // this is just for demo purpose

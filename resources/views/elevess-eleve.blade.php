@@ -14,6 +14,7 @@
                                    <th style="font: size 13px">prenom_E</th>
                                    <th style="font: size 13px">date_naiss</th>
                                    <th style="font: size 13px">classe</th>
+                                   <th style="font: size 13px">Annee</th>
                                    <th style="font: size 13px">Parent</th>
                                    <th style="font: size 13px">Image</th>
                                    <th style="font: size 13px">action</th>
@@ -25,7 +26,9 @@
                                      <td>{{ $data->prenom_el}}</td>
                                      <td>{{ $data->date_naiss }}</td>
                                      <td>{{ $data->classe->numérotation }}</td>
+                                     <td>{{ $data->classe->annee->nom }}</td>
                                      <td>{{ $data->parent->nom_pr.''.$data->parent->prenom_pr }}</td>
+                                    
                                      <td><a href="{{(!empty($data->image))?url('/').'/upload/'.$data->image:url('upload/no_images.png')}}">
                                  <img  src="{{(!empty($data->image))?url('/').'/upload/'.$data->image:url('upload/no_images.png')}}" style="width: 100px; height:100px; border:1px solid #000;"></a></td>
 

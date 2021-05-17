@@ -10,7 +10,7 @@ use App\Models\Annee;
 class Matieres extends Model
 {
     use HasFactory;
-    protected $fillable=['nom','annee_id','niveau','nombre'];
+    protected $fillable=['nom','annee_id','nombre'];
 
     public function profs()
     {

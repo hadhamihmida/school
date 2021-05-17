@@ -11,7 +11,7 @@ class eleves extends Model
 {
     use HasFactory;
 
-   protected $fillabel =[
+   protected $fillable =[
        'nom_el',
        'prenom_el',
        'date_naiss',

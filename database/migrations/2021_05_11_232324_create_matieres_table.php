@@ -16,7 +16,6 @@ class CreateMatieresTable extends Migration
         Schema::create('matieres', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->integer('niveau')->unsigned()->index();
             $table->integer('nombre')->unsigned()->index();
             $table->bigInteger('annee_id')->unsigned();
             $table->timestamps();

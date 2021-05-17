@@ -21,10 +21,9 @@ class CreateProfsTable extends Migration
             $table->string('email');
             $table->integer('tel')->unsigned()->index();
             $table->integer('cin')->unsigned()->index();
-            $table->string('specialite');
             $table->integer('experience')->unsigned()->index();
             $table->date('date_naissance');
-            $table->bigInteger('matiere_id')->unsigned();
+            $table->bigInteger('matiere_id')->unsigned()->index();
             $table->timestamps();
             $table->foreign('matiere_id')->references('id')->on('matieres')->onDelete('cascade');
         });
