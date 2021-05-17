@@ -23,7 +23,7 @@ use App\Http\Controllers\AnneeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
@@ -50,7 +50,7 @@ Route::prefix('profs')->group(function(){
         Route::get('delete/{id}',[StudentController::class,'delete'])->name('delete.Student');
         Route::get('edit/{id}',[StudentController::class, 'edit'])->name('edit.Student');
     });
-    
+
     //parents
     Route::prefix('Parents')->group(function(){
         Route::get('/view',[ParentController::class,'view'])->name('view.Parent');
@@ -71,7 +71,7 @@ Route::prefix('profs')->group(function(){
      //calendreier
      Route::get('fullcalender', [FullCalenderController::class, 'index']);
      Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
-         
+
 
 
     // this is just for demo purpose

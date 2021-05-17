@@ -18,6 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       {{-- toaster --}}
       <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+        @yield('styles')
     </head>
 
     <body class="hold-transition sidebar-mini">
