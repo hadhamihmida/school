@@ -9,6 +9,8 @@ use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\AnneeController;
+use App\Http\Controllers\SeancesController;
+use App\Http\Controllers\TempsController;
 /*
 
 /*
@@ -68,13 +70,16 @@ Route::prefix('profs')->group(function(){
        Route::resource('/annee', AnneeController::class);
        Route::get('annee/{annee}/classes',[AnneeController::class,'classes'])->name('annee.classes');
 
+      //seance
+      Route::resource('/seance', SeancesController::class);
+
+
      //calendreier
      Route::get('fullcalender', [FullCalenderController::class, 'index']);
      Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
 
+     Route::get('temps',[TempsController::class,'index'])->name('temps.index');
+     Route::get('temps/{classe}',[TempsController::class,'temps']);
 
-    // this is just for demo purpose
-    // Route::get('sample',[elevessController::class, 'demo'])->name('demo.sample');
-
-    // try school.test/sample, it should show sample.blade.php
+   

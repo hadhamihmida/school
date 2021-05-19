@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Matieres;
+use App\Models\Seance;
 
 class Profs extends Model
 {
@@ -16,6 +17,9 @@ class Profs extends Model
     {
         return $this->belongsTo(Matieres::class);
     }
-    
+    public function seance()
+    {
+        return $this->hasMany(Seance::class);
+    }
     
 }

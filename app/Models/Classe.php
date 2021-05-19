@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Annee;
 use App\Models\eleves;
+use App\Models\Seance;
 
 class Classe extends Model
 {
@@ -21,5 +22,10 @@ class Classe extends Model
     public function eleves()
     {
         return $this->hasMany(eleves::class);
+    }
+
+    public function seances()
+    {
+        return $this->hasMany(Seance::class);
     }
 }

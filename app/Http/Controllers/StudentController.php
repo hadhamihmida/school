@@ -101,9 +101,5 @@ public function update( Request $request ,eleves $eleve){
 
 
 
-      // for demo purpose
-      //public function demo(){
-             //  return view('sample');
-      //}
-
+     
 }
