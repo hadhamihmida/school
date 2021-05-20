@@ -11,7 +11,7 @@
 
 
     <div class="form-group col-md-4">
-        <select class="form-control" id="annee_id" ">
+        <select class="form-control" id="annee_id">
         <option value="">Select Annee</option>
          @foreach($annees as $annee)
          <option value="{{ $annee->id}}"   {{ (@$editData->classe->annee_id)==$annee->id ? 'selected': ''}} >
@@ -28,8 +28,30 @@
       </div>
     </div>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Jour</th>
+                <th>Date_debut</th>
+                <th>Date_fin</th>
+                <th>Professeur</th>
+                <th>Matiere</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    
+
+
+
+
+
+
 
            </div>
+
 
     <!-- /.content -->
 
@@ -59,7 +81,19 @@
                 $.ajax({
                    url:`{{route('temps.index')}}/${classe_id}`,
                     success:function (data){
-                       console.log(data)
+                        console.log(data);
+                        $('tbody').html('');
+                        data.forEach(function (value,index){
+                            $('tbody').append(`
+                            <tr>
+                                <td>${value.jour}</td>
+                                <td>${value.heure_debut}</td>
+                                <td>${value.heure_fin}</td>
+                                <td>${value.prof.nom}</td>
+                                <td>${value.prof.matiere.nom}</td>
+                                </tr>
+                            `);
+                       });
                     },
                     error:function (error){
                        console.log(error)

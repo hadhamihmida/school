@@ -13,6 +13,7 @@ class TempsController extends Controller
       return view('emplois.temps',compact('annees'));
   }
   public function temps(Classe $classe){
+    $classe=$classe->load('seances.prof.matiere');
       return response()->json($classe->seances);
   }
 }
