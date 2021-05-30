@@ -32,12 +32,20 @@
                                      <td>{{ $data->nombre }}</td>
 
                               <td>
-                                   <a title="Edit" class="btn btn-sm btn-primary" href="{{ route('edit.Parent' ,$data->id ) }}">Modifier</a>
-                                  <a title="Delete"  id="delete" class="btn btn-sm btn-danger" href="{{ route('delete.Parent', $data->id) }}">Supprimer</a>
-                              </td>
+
+
+                                  <form action="{{ route('destroy.Parent', $data->id)}}" method="get" style="display: inline-block">
+              
+                                      <a href="{{ route('edit.Parent' , $data->id)}}" class="btn btn-primary btn-sm">Modifier</a>
+
+                                       @csrf
+                                     @method('DELETE')
+                                        <button class="btn btn-danger btn-sm delete" type="submit">Supprimer</button>
+                                         </form>
+                               </td>
                          </tr>
 
-                         @endforeach
+                                    @endforeach
                            </thead>
                        </table>
                     </div>

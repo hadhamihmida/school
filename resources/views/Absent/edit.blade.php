@@ -1,5 +1,4 @@
 @extends('layouts.master') 
-
 @section('content')
 
 <style>
@@ -13,10 +12,10 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Modifier information</h2>
+                <h2>Modifier les absences</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('classe.index') }}"> Retour</a>
+                <a class="btn btn-primary" href="{{ route('temps.index') }}"> Retour</a>
             </div>
         </div>
     </div>
@@ -34,35 +33,23 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('classe.update', $classe->id) }}">
+      <form method="post" action="{{ route('absent.update', $absent->id) }}">
           <div class="form-group">
               @csrf
               @method('PATCH')
-              <label for="capaciter">Capaciter</label>
-              <input type="int" class="form-control" name="capaciter" value="{{ $classe->capaciter}}"/>
+              <label for="nom">Nom</label>
+              <input type="text" class="form-control" name="nom" value="{{ $absent->prof->nom.$absent->prof->prenom}}"/>
           </div>
           <div class="form-group">
-              <label for="numérotation">Numérotation</label>
-              <input type="int" class="form-control" name="numérotation" value="{{ $classe->numérotation }}"/>
+              <label for="matiere">Matiere</label>
+              <input type="string" class="form-control" name="matiere" value="{{ $absent->matiere->nom }}"/>
           </div>
-
-          <div class="form-group col-md-4">
-        <select class="form-control" name="annee_id">
-        <option value="" >Select</option>
-      
-         @foreach($annees as $annee)
-         <option value="{{ $annee->id  }}" {{$classe->annee_id == $annee->id ? 'selected':''}}>
-          {{$annee->nom}}
-         </option>
-         @endforeach
-        </select>
-
-
-    </div>
-
-
-
-
+          <div class="form-group">
+              <label for="date">Date</label>
+              <input type="date" class="form-control" name="date" value="{{ $absent->date}}"/>
+          </div>
+         
+         
          
           <button type="submit" class="btn btn-block btn-danger">mettre à jour</button>
       </form>

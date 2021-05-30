@@ -46,7 +46,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <!-- here you can create more links like i did -->
-                            <a href="{{route('view.profs')}}" class="nav-link active">
+                            <a href="{{route('view.profs')}}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Professeures</p>
                             </a>
@@ -78,21 +78,71 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <!-- here you can create more links like i did -->
-                            <a href="{{route('matiere.index')}}" class="nav-link active">
+                            <a href="{{route('matiere.index')}}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Matiere</p>
                             </a>
-                            <a href="{{route('classe.index')}}" class="nav-link active">
+                            <a href="{{route('classe.index')}}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Classe</p>
                             </a>
 
-                            <a href="{{route('annee.index')}}" class="nav-link active">
+                            <a href="{{route('annee.index')}}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Liste des classes</p>
                             </a>
                         </li>
+                  </ul>
+                  </li>
+                   <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                           Seances
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <!-- here you can create more links like i did -->
+                            <a href="{{route('seance.index')}}" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>seance</p>
+                            </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="{{route('temps.index')}}" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Emploi de temps</p>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                          Absences
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <!-- here you can create more links like i did -->
+                            <a href="{{route('profsabsents')}}" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>profs_absents</p>
+                            </a>
+                        </li>
+
+                       
+                    </ul>
+                </li>
+
+                        </li>
+
                     </ul>
         </nav>
         <!-- /.sidebar-menu -->

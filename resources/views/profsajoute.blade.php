@@ -8,7 +8,11 @@
         <h3> Insert vos Information </h3>
       </div>
     </div>
-
+    <div>
+    @foreach($errors->all() as $error)
+    <div class="alert alert-danger">{{$error}}</div>
+    @endforeach
+    </div>
     <div class="card-body">
       <form methode="post" action="{{ (@$editData)?route('update.profs', @$editData->id): route('store.profs') }}" enctype="multipart/from-data">
         @csrf

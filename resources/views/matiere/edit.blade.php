@@ -1,5 +1,6 @@
 
-@extends('matiere.layout')
+@extends('layouts.master')
+
 
 @section('content')
 
@@ -41,6 +42,7 @@
               @method('PATCH')
               <label for="nom">Nom</label>
               <input type="text" class="form-control" name="nom" value="{{ $matiere->nom }}"/>
+            
           </div>
         
           <div class="form-group">

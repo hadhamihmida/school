@@ -33,8 +33,16 @@
                                  <img  src="{{(!empty($data->image))?url('/').'/upload/'.$data->image:url('upload/no_images.png')}}" style="width: 100px; height:100px; border:1px solid #000;"></a></td>
 
                                  <td>
-                                   <a title="Edit" class="btn btn-sm btn-primary" href="{{ route('edit.Student' ,$data->id ) }}">Modifier</a>
-                                  <a title="Delete"  id="delete" class="btn btn-sm btn-danger" href="{{ route('delete.Student', $data->id) }}">Supprimer</a>
+                                   
+                                  <form action="{{ route('destroy.Student', $data->id)}}" method="get" style="display: inline-block">
+              
+                                   <a href="{{ route('edit.Student' ,$data->id)}}" class="btn btn-primary btn-sm">Modifier</a>
+
+                                      @csrf
+                                          @method('DELETE')
+                                      <button class="btn btn-danger btn-sm delete" type="submit">Supprimer</button>
+                              </form>
+                                  
                               </td>
 
                          </tr>

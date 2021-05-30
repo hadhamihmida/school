@@ -15,7 +15,7 @@ class StudentController extends Controller
    {
 
       $allData = eleves::all()->load(['parent','classe.annee']);
-
+      //dd($allData);
      return view('elevess-eleve',compact('allData'));
    }
 
@@ -23,6 +23,7 @@ class StudentController extends Controller
 
      $annees = Annee::all();
      $parents= parents::all();
+
 
       return view('elevesajoute',compact('parents','annees'));
 
@@ -48,6 +49,19 @@ class StudentController extends Controller
      $image->move(public_path('upload'), $imagename);
        $request_data['image']= $imagename;
     }
+    public function getMessages(){
+     return $messages =[
+          'nom_el.required'=>'tapez le nom',
+          'prenom_el.required'=>'tapez le prenom ',
+          'date_naiss.required'=>'tapez date de naissance',
+          'image.required'=>'entrer image ',
+          'parent_id.required'=>'tapez le nom de parent ',
+          'classe_id.required'=>'tapez le classe',
+
+      ];
+  }
+
+
        eleves::create($request_data);
 
        $notification = array(
@@ -97,9 +111,15 @@ public function update( Request $request ,eleves $eleve){
              'alert-type'=>'success'
          );
          return redirect()->route('eleve.Student')->with($notification);
-         }
+   }  
 
+   public function destroy($id)
+   {
+      //Students
+       $eleve = eleves::findOrFail($id);
+       $eleve->delete();
 
-
-     
+       return redirect()->route('eleve.Student')->with('completed', 'seance suprimer!!');
+    
+   }
 }

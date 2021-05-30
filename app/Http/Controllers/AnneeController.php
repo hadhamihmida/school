@@ -13,7 +13,8 @@ class AnneeController extends Controller
      */
     public function index()
     {
-        $annee = Annee::all();
+         $annee = Annee::all();
+       // $annees  = array('1' => 'one', '2' => 'two' );
         return view('annee.index', compact('annee'));
     }
 
@@ -39,11 +40,17 @@ class AnneeController extends Controller
             'nom' => 'required',
            
         ]);
-
+      
        Annee::create($request->all());
    
         return redirect()->route('annee.index')
                         ->with('success','annee creer avec succeés.');
+    }
+
+    public function getMessages(){
+         return $messages=[
+             'nom.required'=>'tapez nom',
+         ];
     }
 
     /**
@@ -109,4 +116,10 @@ class AnneeController extends Controller
     {
         return response()->json($annee->classes);
     }
+
+    public function matieres(Annee $annee)
+    {
+        return response()->json($annee->matieres);
+    }
+   
 }

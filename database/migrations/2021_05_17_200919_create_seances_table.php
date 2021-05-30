@@ -23,6 +23,7 @@ class CreateSeancesTable extends Migration
             $table->foreign('classe_id')->references('id')->on('classes')->onDelete('cascade');
             $table->foreign('profs_id')->references('id')->on('profs')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

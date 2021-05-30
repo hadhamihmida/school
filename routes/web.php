@@ -11,6 +11,8 @@ use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\AnneeController;
 use App\Http\Controllers\SeancesController;
 use App\Http\Controllers\TempsController;
+use App\Http\Controllers\absentController;
+use App\Http\Controllers\AbsenteleveController;
 /*
 
 /*
@@ -29,6 +31,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 //Professeures
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('profs')->group(function(){
@@ -38,6 +41,7 @@ Route::prefix('profs')->group(function(){
     Route::get('update/{id}',[profsController::class,'update'])->name('update.profs');
     Route::get('delete/{id}',[profsController::class,'delete'])->name('delete.profs');
     Route::get('edit/{id}',[profsController::class,'edit'])->name('edit.profs');
+    Route::get('destroy/{id}',[profsController::class,'destroy'])->name('destroy.profs');
     });
     //élèves
     Route::prefix('elevess')->group(function(){
@@ -51,6 +55,7 @@ Route::prefix('profs')->group(function(){
         Route::get('ajoute',[StudentController::class, 'ajoute'])->name('ajoute.Student');
         Route::get('delete/{id}',[StudentController::class,'delete'])->name('delete.Student');
         Route::get('edit/{id}',[StudentController::class, 'edit'])->name('edit.Student');
+        Route::get('destroy/{id}',[StudentController::class,'destroy'])->name('destroy.Student');
     });
 
     //parents
@@ -61,6 +66,7 @@ Route::prefix('profs')->group(function(){
         Route::post('update/{parent}',[ParentController::class,'update'])->name('update.Parent');
         Route::get('delete/{id}',[ParentController::class,'delete'])->name('delete.Parent');
         Route::get('edit/{id}',[ParentController::class,'edit'])->name('edit.Parent');
+        Route::get('destroy/{id}',[ParentController::class,'destroy'])->name('destroy.Parent');
         });
         //matiéres
         Route::resource('/matiere', MatiereController::class);
@@ -72,14 +78,16 @@ Route::prefix('profs')->group(function(){
 
       //seance
       Route::resource('/seance', SeancesController::class);
-
-
-     //calendreier
-     Route::get('fullcalender', [FullCalenderController::class, 'index']);
-     Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
-
-
+      //temps
      Route::get('temps',[TempsController::class,'index'])->name('temps.index');
      Route::get('temps/{classe}',[TempsController::class,'temps']);
-
-   
+    //teachersabsents
+    Route::get('absent_prof/{seance}',[TempsController::class,'temps2']);
+    Route::post('absent_prof/{seance}/create',[absentController::class,'create'])->name('absent_prof.create');
+   Route::get('absent_profs',[absentController::class,'absents'])->name('profsabsents');
+   Route::get('edit/{id}',[absentController::class,'edit'])->name('absent.edit');
+   Route::delete('absent_prof/{seance}/destroy',[absentController::class,'destroy'])->name('absent.destroy');
+   Route::patch('update/{id}',[absentController::class,'update'])->name('absent.update');
+   //absenteleve
+   Route::get('absentstudent',[AbsenteleveController::class,'index'])->name('absentstudent.index');
+   Route::get('classe/{classe}/eleves',[ClasseController::class,'eleves'])->name('classe.eleves');

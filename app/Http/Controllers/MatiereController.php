@@ -30,6 +30,7 @@ class MatiereController extends Controller
     {
             $annees = Annee::all();
             return view('matiere.create',compact('annees'));
+            
     }
 
     /**
@@ -41,17 +42,28 @@ class MatiereController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nom' => 'required',
-            'nombre' => 'required',
+            'nom' => 'required|max:20',
+            'nombre' => 'required|numeric',
             'annee_id'=> 'required',
         ]);
-
+        
        Matieres::create($request->all());
    
         return redirect()->route('matiere.index')
                         ->with('success','matieres creer avec succeés.');
+      
+    
+    // if($request->fails())  {
+       // return redirect()->back()->withErrors($request)->withInputs($request->all());   
+       // }
     }
-
+       public function getMessages(){
+           return $messages =[
+        'nom.reqired'=>'entrer le nom',
+        'nombre.required' =>'entrer le nombre',
+        'annee_id.required' =>'selectionner annees',
+           ];
+      }
     /**
      * Display the specified resource.
      *

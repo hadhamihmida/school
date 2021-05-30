@@ -30,7 +30,10 @@
           <div class="form-group">
               @csrf
               <label for="capaciter">Nom</label>
-              <input type="text" class="form-control" name="nom"/>
+              <input type="text" class="form-control" name="nom" value="{{old('nom')}}"/>
+              @error('nom')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
           </div>
          
           

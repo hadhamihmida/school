@@ -38,8 +38,16 @@
                                      <td>{{ $data->tel }}</td>
                                   
                               <td>            
-                                   <a title="Edit" class="btn btn-sm btn-primary" href="{{ route('edit.profs' ,$data->id ) }}">Modifier</a>
-                                  <a title="Delete"  id="delete" class="btn btn-sm btn-danger" href="{{ route('delete.profs', $data->id) }}">Supprimer</a>
+                            
+
+               <form action="{{ route('destroy.profs', $data->id)}}" method="get" style="display: inline-block">
+              
+              <a href="{{ route('edit.profs' ,$data->id)}}" class="btn btn-primary btn-sm">Modifier</a>
+
+                  @csrf
+                  @method('DELETE')
+                  <button class="btn btn-danger btn-sm delete" type="submit">Supprimer</button>
+                </form>
                               </td>
                          </tr>
 

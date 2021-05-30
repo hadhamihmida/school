@@ -17,8 +17,9 @@ class SeancesController extends Controller
      */
     public function index()
     {
-        $seance = Seance::all()->load(['prof','classe.annee']);
-        return view('seance.index', compact('seance'));
+        $seances = Seance::all()->load(['prof','classe.annee']);
+    //dd($seances);
+        return view('seance.index', compact('seances'));
     }
 
     /**
@@ -54,6 +55,17 @@ class SeancesController extends Controller
         return redirect()->route('seance.index')
                         ->with('success','seances creer avec succeés.');
     }
+    public function getMessages(){
+        return $messages =[
+            'heure_debut.required'=>'tapez le debut de seance',
+            'heure_fin.required'=>'tapez le fin de seances',
+            'jour.required'=>'tapez le jour de sceances',
+            'classe_id.required'=>'tapez la classe',
+            'prof_id.required'=>'tapez le profeseur',
+
+        ];
+    }
+
 
     /**
      * Display the specified resource.

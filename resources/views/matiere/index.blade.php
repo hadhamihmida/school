@@ -43,12 +43,13 @@
             <td> {{  $matiere->annee->nom}}</td>
             <td class="text-center">
                 <form action="{{ route('matiere.destroy', $matiere->id) }}" method="post" style="display: inline-block">
+                <a class="btn btn-info" href="{{ route('matiere.show',$matiere->id) }}">affiche</a>    
                 
                 <a href="{{ route('matiere.edit', $matiere->id)}}" class="btn btn-primary btn-sm">Modifier</a> 
 
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger btn-sm" type="submit">Supprimer</button>
+                    <button class="btn btn-danger btn-sm delete"  type="submit">Supprimer</button>
                   </form>
             </td>
         </tr>

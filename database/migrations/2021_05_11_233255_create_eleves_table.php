@@ -24,6 +24,7 @@ class CreateElevesTable extends Migration
             $table->timestamps();
             $table->foreign('parent_id')->references('id')->on('parents')->onDelete('cascade');
             $table->foreign('classe_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 

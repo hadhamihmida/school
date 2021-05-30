@@ -16,6 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         {{-- datables css --}}
          <link rel="stylesheet" href="http://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
+
       {{-- toaster --}}
       <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
         @yield('styles')
@@ -86,14 +87,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- REQUIRED SCRIPTS -->
         <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/printThis.js') }}"></script>
         <!-- jQuery -->
-        <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
+        <!--<script src="plugins/jquery/jquery.min.js"></script>-->
         <!-- Bootstrap 4 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
         <!-- AdminLTE App -->
         <!-- <script src="dist/js/adminlte.min.js"></script> -->
         <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
         <script type="text/javascript">
+
         $(document).ready( function () {
           $('#myTable').DataTable();
           $('#image').change(function(e){
@@ -125,34 +129,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 }
               @endif
         </script>
+        {{--sweetalert2--}}
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     
         {{-- sweet Alert --}}
 
         <script type="text/javascript">
-          $(function(){
-            $(document).on ('click','#delete', function(e){
-              e.preventDefault();
-              var link=$(this).attr("href");
-              swal.fire({
-               title: 'êtes-vous sûr?',
-               text: "Vous ne pourrez pas annuler cela!",
-               icon: 'Attention',
-               showCancelButton: true,
-               confirmButtonColor: '#3085d6',
-               cancelButtonColor: '#d33',
-               confirmButtonText: 'Oui, supprimez-le!'
-              }).then((result)=>{
-                if(result.value){
-                  window.location.href = link;
-                  swal.fire(
-                    'Supprimé!',
-                    'Votre fichier a été supprimé!.',
-                    'Succès'
-                  )
-                }
-              })
-            });
-          });
-        </script>
+  $(function(){
+    $('body').on ('click','.delete', function(e){
+      e.preventDefault();
+      const that = $(this);
+      swal.fire({
+       title: 'êtes-vous sûr?',
+       text: "Vous ne pourrez pas annuler cela!",
+       icon: 'Attention',
+       showCancelButton: true,
+       confirmButtonColor: '#3085d6',
+       cancelButtonColor: '#d33',
+       confirmButtonText: 'Oui, supprimez-le!'
+      }).then((result)=>{
+        if(result.value){
+          swal.fire(
+            'Supprimé!',
+            'Votre fichier a été supprimé!.',
+            'Succès'
+          )
+          that.closest('form').submit(); 
+        }
+      })
+    });
+  });
+</script>
         @yield('scripts')
     </body>
 
