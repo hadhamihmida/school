@@ -13,6 +13,7 @@ use App\Http\Controllers\SeancesController;
 use App\Http\Controllers\TempsController;
 use App\Http\Controllers\absentController;
 use App\Http\Controllers\AbsenteleveController;
+use App\Http\Controllers\ExamensController;
 /*
 
 /*
@@ -68,20 +69,22 @@ Route::prefix('profs')->group(function(){
         Route::get('edit/{id}',[ParentController::class,'edit'])->name('edit.Parent');
         Route::get('destroy/{id}',[ParentController::class,'destroy'])->name('destroy.Parent');
         });
-        //matiéres
+    //matiéres
         Route::resource('/matiere', MatiereController::class);
+        Route::get('annee/{annee}/matieres', [AnneeController::class,'matieres']);
+
         //classe
         Route::resource('/classe', ClasseController::class);
        //Annee
        Route::resource('/annee', AnneeController::class);
        Route::get('annee/{annee}/classes',[AnneeController::class,'classes'])->name('annee.classes');
 
-      //seance
+//seance
       Route::resource('/seance', SeancesController::class);
-      //temps
+//temps
      Route::get('temps',[TempsController::class,'index'])->name('temps.index');
      Route::get('temps/{classe}',[TempsController::class,'temps']);
-    //teachersabsents
+//teachersabsents
     Route::get('absent_prof/{seance}',[TempsController::class,'temps2']);
     Route::post('absent_prof/{seance}/create',[absentController::class,'create'])->name('absent_prof.create');
    Route::get('absent_profs',[absentController::class,'absents'])->name('profsabsents');
@@ -91,3 +94,5 @@ Route::prefix('profs')->group(function(){
    //absenteleve
    Route::get('absentstudent',[AbsenteleveController::class,'index'])->name('absentstudent.index');
    Route::get('classe/{classe}/eleves',[ClasseController::class,'eleves'])->name('classe.eleves');
+ //examen
+   Route::resource('/examen', ExamensController::class);

@@ -35,7 +35,7 @@ class profsController extends Controller
         'nom' => 'required',
         'prenom' => 'required',
         'email' => ['required','string','max:255', 'unique:profs'],
-        'cin' => ['required','int','max:9','unique:profs'],
+        'cin' => ['required','digits:8','unique:profs'],
         'adresse' => 'required',
         'date_naissance' => 'required',
         'tel' => 'required',
@@ -43,6 +43,17 @@ class profsController extends Controller
         'matiere_id' => 'required',
         
     ]);
+   //Matieres
+   Profs::create($request->all());
+
+       $notification = array(
+           'message'=>'Insertion avec succées!',
+           'alert-type'=>'success'
+       );
+       return redirect()->route('view.profs')->with($notification);
+      
+    }
+
     public function getMessages(){
         return $messages =[
             'nom.required'=>'tapez nom',
@@ -55,19 +66,6 @@ class profsController extends Controller
             'experience.required'=>'tapez les annees des experiences',
             'matiere_id.required'=>'tapez le matiere',
         ];
-    }
-
-
-
-   //Matieres
-   Profs::create($request->all());
-
-       $notification = array(
-           'message'=>'Insertion avec succées!',
-           'alert-type'=>'success'
-       );
-       return redirect()->route('view.profs')->with($notification);
-      
     }
 
     

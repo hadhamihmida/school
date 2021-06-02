@@ -87,13 +87,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- REQUIRED SCRIPTS -->
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/printThis.js') }}"></script>
+       
         <!-- jQuery -->
         <!--<script src="plugins/jquery/jquery.min.js"></script>-->
         <!-- Bootstrap 4 -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
         <!-- AdminLTE App -->
+        <script src="{{ asset('js/printThis.js') }}"></script>
         <!-- <script src="dist/js/adminlte.min.js"></script> -->
         <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
         <script type="text/javascript">

@@ -34,7 +34,7 @@
       <form method="post" action="{{route('absent_prof.create',$seance->id)}}">
           <div class="form-group">
               @csrf
-              in
+             
               <label for="capaciter">Date</label>
               <input type="date" class="form-control" name="date"/>
           </div>

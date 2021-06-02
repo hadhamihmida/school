@@ -1,16 +1,19 @@
 @extends('layouts.master')
   @section('content')
-
-<div class="card">
+  <div class="card">
     <div class="card-header">
         <h3> temps:    </h3>
     </div>
     <div class="card-body">
         <div class="form-row">
 
-
-
-            <div class="form-group col-md-4">
+ 
+ 
+        <form method="post" action="{{ route('examen.store') }}">
+         
+              @csrf
+              <div class="form-row">
+            <div class="form-group col-md-12">
                 <select class="form-control" id="annee_id">
                 <option value="">Select Annee</option>
                 @foreach($annees as $annee)
@@ -19,29 +22,25 @@
                 </option>
                 @endforeach
                 </select>
-            </div>
-
-            <div class="form-group col-md-4">
+           </div>
+           <div class="form-group col-md-12">
                 <select class="form-control" id="classe_id" name="classe_id">
                     <option value="">Select Classe</option>
                 </select>
             </div>
-        </div>
-       
-        <form action="">
-        @csrf
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>prenom</th>
-                        <th>action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <button class="btn btn-primary" >Enregistrer</button>
+
+            <div class="form-group col-md-12">
+                <select class="form-control" id="matiere_id" name="matiere_id">
+                    <option value="">Select Matiere</option>
+                   
+                </select>
+            </div>
+
+        <div class="form-group col-md-12">
+        <label for="date">Date</label>
+              <input type="date" class="form-control" name="date"/>
+          </div>
+          <button type="submit" class="btn btn-block btn-danger">Enregistrer</button>
         </form>
 
 
@@ -69,40 +68,23 @@
                        console.log(error)
                     }
                 });
-            });
-            $('body').on('change','#classe_id',function(e){
-                var classe_id = e.target.value;
                 $.ajax({
-                   url:`{{route('classe.index')}}/${classe_id}/eleves`,
+                   url:`{{route('annee.index')}}/${annee_id}/matieres`,
                     success:function (data){
-                        console.log(data);
-                        $('tbody').html('');
-                        data.forEach(function (value,index){
-                            $('tbody').append(`
-                            <tr>
-                                <td>${value.nom_el}</td>
-                                <td>${value.prenom_el}</td>
-                                <td>
-                                <div class="form-row">
-                                <div class="col-lg-6"><input type="radio" name="status[${value.id}]" value="0"> Present </div>
-                                <div class="col-lg-6"><input type="radio" name="status[${value.id}]" value="1"> Absent</div>
-                                </div>
-                                </td>
-                            
-
-
-                            </tr>
+                        console.log(data)
+                        $('#matiere_id').html(`<option value="">Select 2 matiere</option>`);
+                       data.forEach(function (value,index){
+                            $('#matiere_id').append(`
+                                <option value="${value.id}">${value.nom}</option>
                             `);
-                            $('#print').attr('data-annee',value.classe.annee.nom);
-                            $('#print').attr('data-classe',value.classe.numérotation);
                        });
-                        
                     },
                     error:function (error){
                        console.log(error)
                     }
                 });
             });
+           
             $('#print').click(function(e){
                 $('table').printThis({
                     header: `
@@ -118,5 +100,3 @@
     </script>
 
 @endsection()
-
-

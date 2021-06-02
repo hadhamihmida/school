@@ -22,8 +22,8 @@
       <form method="post" action="{{ route('seance.store') }}">
           <div class="form-group">
               @csrf
-              <select name="jour"  class="custom-select custom-select-lg mb-3">
-  <option selected>Jour</option>
+              <select name="jour"  class="custom-select custom-select-lg mb-3" value="{{old('jour')}}">
+  <option selected> jour </option>
   <option value="1">Lundi</option>
   <option value="2">Mardi</option>
   <option value="3">Mercredi</option>
@@ -32,6 +32,9 @@
   <option value="6">Samedi</option>
 
 </select>
+@error('jour')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
           </div>
 
           <div class="form-group row">

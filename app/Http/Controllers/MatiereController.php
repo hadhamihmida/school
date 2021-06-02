@@ -86,7 +86,7 @@ class MatiereController extends Controller
         //return $matiere;
 
          $matiere = Matieres::findOrFail($id);
-         $annees =Annee::all();
+         $annees = Annee::all();
         return view('matiere.edit', compact('matiere','annees'));
     }
 

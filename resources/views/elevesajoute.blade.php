@@ -11,31 +11,43 @@
   @csrf
   <div class="form-row">
     <div class="form-group col-md-4">
-      <input name="nom_el" type="text" class="form-control"   value="{{ (@$editData->nom_el) }}"   placeholder=" nom_élève">
+      <input name="nom_el" type="text" class="form-control" value="{{old('nom_el')}}"  value="{{ (@$editData->nom_el) }}"   placeholder=" nom_élève">
+      @error('nom_el')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
     </div>
 
       <div class="form-group col-md-4">
-          <input name="prenom_el"   type="text" class="form-control"   value="{{ (@$editData->prenom_el) }}"   placeholder=" prenom_élève">
+          <input name="prenom_el"   type="text" class="form-control" value="{{old('prenom_el')}}"   value="{{ (@$editData->prenom_el) }}"   placeholder=" prenom_élève">
+          @error('prenom_el')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
       </div>
 
       <div class="form-group col-md-4" >
-          <input   name="date_naiss" type="date" class="form-control" value="{{ (@$editData->date_naiss) }}"    placeholder="Date_Naissance">
+          <input   name="date_naiss" type="date" class="form-control" value="{{old('date_naiss')}}" value="{{ (@$editData->date_naiss) }}"    placeholder="Date_Naissance">
+          @error('date_naiss')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
       </div>
 
     <div class="form-group col-md-4">
-        <select class="form-control" name="parent_id">
+        <select class="form-control" name="parent_id" value="{{old('parent_id')}}">
          @foreach($parents as $parent)
          <option value="{{ $parent->id  }}"  {{ (@$editData->parent_id)==$parent->id ? 'selected': ''}} >
           {{$parent->nom_pr.' '. $parent->prenom_pr }}
          </option>
          @endforeach
+         @error('parent_id')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
         </select>
 
 
     </div>
 
     <div class="form-group col-md-4">
-        <select class="form-control" id="annee_id" name="annee_id">
+        <select class="form-control" id="annee_id" name="annee_id" value="{{old('annee_id')}}">
         <option value="">Select Annee</option>
          @foreach($annees as $annee)
          <option value="{{ $annee->id}}"   {{ (@$editData->classe->annee_id)==$annee->id ? 'selected': ''}} >
@@ -43,16 +55,25 @@
          </option>
          @endforeach
         </select>
+        @error('annee_id')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
     </div>
 
       <div class="form-group col-md-4">
-          <select class="form-control" id="classe_id" name="classe_id">
+          <select class="form-control" id="classe_id"  name="classe_id" vlue="{{old('classe_id')}}">
               <option value="">Select Classe</option>
           </select>
+          @error('classe_id')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
       </div>
 
        <div class=" form-group col-md-6">
-         <input name="image"    type="file" class="form-control"  value="{{ (@$editData->image) }}"    id="image" placeholder=" select_image">
+         <input name="image"    type="file" class="form-control" value="{{old('image')}}"  value="{{ (@$editData->image) }}"    id="image" placeholder=" select_image">
+         @error('image')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
       </div>
 
       <div class=" form-group col-md-6">

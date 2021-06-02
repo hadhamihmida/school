@@ -49,19 +49,6 @@ class StudentController extends Controller
      $image->move(public_path('upload'), $imagename);
        $request_data['image']= $imagename;
     }
-    public function getMessages(){
-     return $messages =[
-          'nom_el.required'=>'tapez le nom',
-          'prenom_el.required'=>'tapez le prenom ',
-          'date_naiss.required'=>'tapez date de naissance',
-          'image.required'=>'entrer image ',
-          'parent_id.required'=>'tapez le nom de parent ',
-          'classe_id.required'=>'tapez le classe',
-
-      ];
-  }
-
-
        eleves::create($request_data);
 
        $notification = array(
@@ -72,7 +59,16 @@ class StudentController extends Controller
       //back()->with($notification);
 
    } 
-
+   public function getMessages(){
+    return $messages =[
+         'nom_el.required'=>'tapez le nom',
+         'prenom_el.required'=>'tapez le prenom ',
+         'date_naiss.required'=>'tapez date de naissance',
+         'image.required'=>'entrer image',
+         'parent_id.required'=>'tapez le nom de parent',
+         'classe_id.required'=>'tapez le classe',
+     ];
+    }
  public function delete($id){
 
    eleves::find($id)->delete();

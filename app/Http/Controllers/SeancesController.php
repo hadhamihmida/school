@@ -17,9 +17,21 @@ class SeancesController extends Controller
      */
     public function index()
     {
-        $seances = Seance::all()->load(['prof','classe.annee']);
+        $seances = Seance::all()->load(['prof','classe.annee'])
+        ->each(function ($item, $key) {
+                    $semaine=[
+                        1=>'Lundi',
+                        2=>'Mardi',
+                        3=>'Merecredi',
+                        4=>'Jeudi',
+                        5=>'Vendredi',
+                        6=>'Samedi',
+                    ];
+                    $item->jour= $semaine[ $item->jour];
+                });
     //dd($seances);
         return view('seance.index', compact('seances'));
+
     }
 
     /**
@@ -73,7 +85,7 @@ class SeancesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Seances   $seance)
+    public function show(Seance   $seance)
     {
         return view('seance.show',compact('seance'));
     }
@@ -87,7 +99,7 @@ class SeancesController extends Controller
     public function edit($id)
     {
         $profs = Profs::all();
-       $Annees = Annee::all();
+        $Annees = Annee::all();
         $seance = Seance::findOrFail($id);
         return view('seance.edit', compact('seance','profs','Annees'));
     }
@@ -99,7 +111,7 @@ class SeancesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,   Seances $seance)
+    public function update(Request $request,   Seance $seance)
     {
         $request->validate([
             'heure_debut' => 'required',
@@ -124,7 +136,7 @@ class SeancesController extends Controller
      */
     public function destroy($id)
     {
-        $seance = Seances::findOrFail($id);
+        $seance = Seance::findOrFail($id);
         $seance->delete();
 
         return redirect('/seance')->with('completed', 'seance suprimer!!');
