@@ -7,6 +7,7 @@
         </div>
            <div class="card-body">
   <div class="form-row">
+ 
 
 
 
@@ -83,26 +84,58 @@
                 $.ajax({
                    url:`{{route('temps.index')}}/${classe_id}`,
                     success:function (data){
-                        console.log(data);
+                        let myArray=data.sort((a,b) => (a.heure_debut > b.heure_debut) ? 1 : ((b.heure_debut > a.heure_debut) ? -1 : 0));
+                        let semaine={
+                            1:'Lundi',
+                            2:'Mardi',
+                            3:'Merecredi',
+                            4:'Jeudi',
+                            5:'Vendredi',
+                            6:'Samedi',
+                        };
+                        let seancesPerJour={
+                            1:{'jour':'Lundi','seances':[]},
+                            2:{'jour':'Mardi','seances':[]},
+                            3:{'jour':'Merecredi','seances':[]},
+                            4:{'jour':'Jeudi','seances':[]},
+                            5:{'jour':'Vendredi','seances':[]},
+                            6:{'jour':'Samedi','seances':[]},
+                        };
+                        myArray.forEach(function (value,index){
+                            seancesPerJour[value.jour]['seances'].push(value);
+                       });
+                       var result = Object.keys(seancesPerJour).map((key) => [Number(key), seancesPerJour[key]]);
                         $('tbody').html('');
-                        data.forEach(function (value,index){
-                            $('tbody').append(`
-                            <tr>
-                                <td>${value.jour}</td>
-                                <td>${value.heure_debut}</td>
-                                <td>${value.heure_fin}</td>
-                                <td>${value.prof.nom}</td>
-                                <td>${value.prof.matiere.nom}</td>
-                                <td><a href="{{url('/absent_prof')}}/${value.id}">add absent</a></td>
+                        result.forEach(function (value,index){
+                            console.log(value)
+                            let seances_to_show=``;     
+                            var result2 = Object.keys(value[1]['seances']).map((key) => [Number(key), value[1]['seances'][key]]);
+                            let table='';
+                            if(value[1]['seances'].length > 0){
+                                result2.forEach(function (value,index){
+                                    seances_to_show+=`<tr>
+                                    <td>${value[1].heure_debut}</td>
+                                    <td>${value[1].heure_fin}</td>
+                                    <td>${value[1].prof.nom}</td>
+                                    <td>${value[1].prof.matiere.nom}</td>
+                                    <td><a href="{{url('/absent_prof')}}/${value[1].id}">add absent</a></td></tr>
+                                    `;
+                                });
+                                table=`<td>${seances_to_show}</td>`;
+                            }else{
+                                table=`<td colspan="5">jour libre</td>`;
+                            }
                             
+                            $('tbody').append(`
+                                <tr>
+                                    <td rowspan="${value[1]['seances'].length == 0 ? 1 : value[1]['seances'].length+1}">${value[1]['jour']}</td>
+                                    ${table}
                                 </tr>
                             `);
-                            $('#print').attr('data-annee',value.classe.annee.nom);
-                            $('#print').attr('data-classe',value.classe.numérotation);
                        });
                     },
                     error:function (error){
-                       console.log(error)
+                       console.log(error);
                     }
                 });
             });

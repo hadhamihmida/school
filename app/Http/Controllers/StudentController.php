@@ -14,7 +14,7 @@ class StudentController extends Controller
    public function eleve()
    {
 
-      $allData = eleves::all()->load(['parent','classe.annee']);
+      $allData = eleves::with(['parent','classe.annee'])->paginate(3);
       //dd($allData);
      return view('elevess-eleve',compact('allData'));
    }

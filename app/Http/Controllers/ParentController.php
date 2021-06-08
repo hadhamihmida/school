@@ -57,7 +57,7 @@ class ParentController extends Controller{
 
          public function view(){
 
-             $allData = Parents::all();
+             $allData = Parents::paginate(4);
              return view('Parents-view',compact('allData'));
          }
 

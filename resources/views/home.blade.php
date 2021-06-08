@@ -13,7 +13,7 @@
                 <p>Profes count</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="ion ion-briefcase"></i>
               </div>
             </div>
           </div>
@@ -27,7 +27,7 @@
                 <p>eleves count</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="ion ion-person-add"></i>
               </div>
             </div>
           </div>
@@ -41,7 +41,7 @@
                 <p>Classe</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="ion ion-home"></i>
               </div>
              
             </div>
@@ -56,7 +56,7 @@
                 <p>Annee</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-clipboard"></i>
               </div>
              
             </div>
@@ -72,10 +72,11 @@
                 <p>eleves in {{$value}}</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-person-stalker"></i>
               </div>
               
             </div>
+            
           </div>
           @endforeach
         </div>

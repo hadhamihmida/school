@@ -4,7 +4,7 @@
                 <div class="card-header">
                  <h3>
                  liste des Parents
-                 <a class="btn btn-success float-right btn-sm" href="{{ route('ajoute.Parent') }}"><i class="fa fa-list"></i>Ajout</a>
+                 <a class="btn btn-secondary float-right btn-sm" href="{{ route('ajoute.Parent') }}"><i class="fa fa-list"></i>Ajout</a>
                  </h3>
                 </div>
 
@@ -40,7 +40,7 @@
 
                                        @csrf
                                      @method('DELETE')
-                                        <button class="btn btn-danger btn-sm delete" type="submit">Supprimer</button>
+                                        <button class="btn btn-warning btn-sm delete" type="submit">Supprimer</button>
                                          </form>
                                </td>
                          </tr>
@@ -48,6 +48,7 @@
                                     @endforeach
                            </thead>
                        </table>
+                       {{$allData->links('pagination.input')}}
                     </div>
 
 @endsection

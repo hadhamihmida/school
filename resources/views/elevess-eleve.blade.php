@@ -2,7 +2,7 @@
   @section('content')
     <div class="card">
         <div class="card-header">
-        <a class="btn btn-success float-right btn-sm" href="{{ route('ajoute.Student') }}"><i class="fa fa-list"></i>Ajout</a>
+        <a class="btn btn-secondary float-right btn-sm" href="{{ route('ajoute.Student') }}"><i class="fa fa-list"></i>Ajout</a>
         <h3> Liste d'information:    </h3>
         </div>
            <div class="card-body">
@@ -40,7 +40,7 @@
 
                                       @csrf
                                           @method('DELETE')
-                                      <button class="btn btn-danger btn-sm delete" type="submit">Supprimer</button>
+                                      <button class="btn btn-warning btn-sm delete" type="submit">Supprimer</button>
                               </form>
                                   
                               </td>
@@ -50,7 +50,7 @@
                          @endforeach
                            </thead>
                        </table>
-
+                    {{$allData->links('pagination.input')}}
 
           </div>
 

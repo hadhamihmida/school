@@ -11,7 +11,7 @@
         <div class="col-lg-12 margin-tb">
             
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('profsabsents') }}"> Listes des absents</a>
+                <a class="btn btn-secondary" href="{{ route('profsabsents') }}"> Listes des absents</a>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
   @endif
   <table class="table">
     <thead>
-        <tr class="table-warning">
+        <tr class="table-light">
           <td>ID</td>
           <td>Nom</td>
           <td>Matiere</td>
@@ -48,7 +48,7 @@
 
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger btn-sm delete" type="submit">Supprimer</button>
+                    <button class="btn btn-warning btn-sm delete" type="submit">Supprimer</button>
                   </form>
             </td>
           
@@ -56,6 +56,7 @@
         @endforeach
     </tbody>
   </table>
+      {{$absents->links('pagination.input')}}
 <div>
 
 @endsection

@@ -15,9 +15,9 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        $classe = Classe::all()->load('annee');
+        $classes = Classe::with('annee')->paginate(5);
         //dd($classe);
-        return view('classe.index', compact('classe'));
+        return view('classe.index', compact('classes'));
     }
 
     /**

@@ -54,5 +54,6 @@
           <button type="submit" class="btn btn-block btn-danger">mettre à jour</button>
       </form>
   </div>
+ 
 </div>
 @endsection

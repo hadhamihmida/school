@@ -11,7 +11,7 @@
         <div class="col-lg-12 margin-tb">
             
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('annee.create') }}"> Ajouter un classe</a>
+                <a class="btn btn-secondary" href="{{ route('annee.create') }}"> Ajoute classe</a>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
   @endif
   <table class="table">
     <thead>
-        <tr class="table-warning">
+        <tr class="table-light">
           <td>ID</td>
           <td>Nom</td>
          
@@ -32,7 +32,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($annee as $annee)
+        @foreach($annees as $annee)
         <tr>
             <td>{{$annee->id}}</td>
             <td>{{$annee->nom}}</td>
@@ -44,13 +44,14 @@
 
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger btn-sm delete" type="submit">Supprimer</button>
+                    <button class="btn btn-warning btn-sm delete" type="submit">Supprimer</button>
                   </form>
             </td>
         </tr>
         @endforeach
     </tbody>
   </table>
+        {{$annees->links('pagination.input')}}
 <div>
 
 @endsection

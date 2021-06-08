@@ -13,9 +13,9 @@ class AnneeController extends Controller
      */
     public function index()
     {
-         $annee = Annee::all();
+         $annees = Annee::paginate(3);
        // $annees  = array('1' => 'one', '2' => 'two' );
-        return view('annee.index', compact('annee'));
+        return view('annee.index', compact('annees'));
     }
 
     /**
