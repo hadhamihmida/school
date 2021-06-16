@@ -13,7 +13,7 @@
         <div class="col-lg-12 margin-tb">
             
             <div class="end">
-                <a class="btn btn-secondary" href="{{ route('matiere.create') }}"> Ajoute matiere</a>
+                <a class="btn btn-secondary float-right btn-sm" href="{{ route('matiere.create') }}"><i class="fa fa-list"></i> Ajoute matiere</a>
             </div>
         </div>
     </div>

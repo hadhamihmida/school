@@ -93,8 +93,7 @@
 
                             </tr>
                             `);
-                            $('#print').attr('data-annee',value.classe.annee.nom);
-                            $('#print').attr('data-classe',value.classe.numérotation);
+                        
                        });
                         
                     },

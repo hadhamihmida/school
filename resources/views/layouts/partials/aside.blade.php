@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="{{url('home')}}" class="brand-link">
         <img src="{{ asset('img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Admin</span>
+        <span class="brand-text font-weight-light">admin</span>
     </a>
 
     <!-- this is Sidebar -->
@@ -33,6 +33,36 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
+
+
+       <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            scolarité
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <!-- here you can create more links like i did -->
+                            <a href="{{route('annee.index')}}" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Gérer années</p>
+                            </a>
+                            <a href="{{route('classe.index')}}" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Gérer classes</p>
+                            </a>
+
+                           
+                            <a href="{{route('matiere.index')}}" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Gérer matières</p>
+                            </a>
+                        </li>
+                  </ul>
+                  </li>
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -46,52 +76,28 @@
                             <!-- here you can create more links like i did -->
                             <a href="{{route('view.profs')}}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Professeures</p>
+                                <p> Gérer Profs</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{route('view.Parent')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Gérer parents</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="{{route('eleve.Student')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Eleves</p>
+                                <p> Gérer élèves</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{route('view.Parent')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Parents</p>
-                            </a>
-                        </li>
+                       
 
                     </ul>
                 </li>
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            scolarité
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <!-- here you can create more links like i did -->
-                            <a href="{{route('matiere.index')}}" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Matiere</p>
-                            </a>
-                            <a href="{{route('classe.index')}}" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Classe</p>
-                            </a>
-
-                            <a href="{{route('annee.index')}}" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Liste des classes</p>
-                            </a>
-                        </li>
-                  </ul>
-                  </li>
+              
                    <li class="nav-item menu-open">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -105,7 +111,7 @@
                             <!-- here you can create more links like i did -->
                             <a href="{{route('seance.index')}}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>seance</p>
+                                <p> Gérer seances</p>
                             </a>
                         </li>
 
@@ -122,7 +128,7 @@
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                          Absences
+                         Gérer Absences
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -131,11 +137,27 @@
                             <!-- here you can create more links like i did -->
                             <a href="{{route('profsabsents')}}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>profs_absents</p>
+                                <p>Profs</p>
+                            </a>
+                          
+                        </li>
+                     </ul>
+                    </li>
+                 <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                         Examen
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                        <a href="{{route('examen.index')}}" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Gérer les examens</p>
                             </a>
                         </li>
-
-                       
                     </ul>
                 </li>
 

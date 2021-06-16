@@ -30,6 +30,7 @@ class SeancesController extends Controller
                     $item->jour= $semaine[ $item->jour];
                 });
     //dd($seances);
+    $seances=Seance::paginate('4');
         return view('seance.index', compact('seances'));
 
     }

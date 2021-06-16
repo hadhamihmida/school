@@ -137,4 +137,8 @@ class ClasseController extends Controller
          
         return response()->json($classe->eleves);
      }
+     public function examens(Classe $classe){
+
+         return response()->json($classe->examens->load('matiere'));
+     }
 }

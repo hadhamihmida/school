@@ -11,7 +11,7 @@
         <div class="col-lg-12 margin-tb">
             
             <div class="pull-right">
-                <a class="btn btn-secondary" href="{{ route('annee.create') }}"> Ajoute classe</a>
+                <a class="btn btn-secondary float-right btn-sm" href="{{ route('annee.create') }}"> <i class="fa fa-list"></i>Ajoute classe</a>
             </div>
         </div>
     </div>

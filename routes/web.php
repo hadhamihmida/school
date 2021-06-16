@@ -5,7 +5,6 @@ use App\Http\Controllers\profsController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\MatiereController;
-// you didnot add calender class here
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\AnneeController;
@@ -14,6 +13,7 @@ use App\Http\Controllers\TempsController;
 use App\Http\Controllers\absentController;
 use App\Http\Controllers\AbsenteleveController;
 use App\Http\Controllers\ExamensController;
+use App\Http\Controllers\NoteController;
 /*
 
 /*
@@ -75,6 +75,8 @@ Route::prefix('profs')->group(function(){
 
         //classe
         Route::resource('/classe', ClasseController::class);
+
+
        //Annee
        Route::resource('/annee', AnneeController::class);
        Route::get('annee/{annee}/classes',[AnneeController::class,'classes'])->name('annee.classes');
@@ -94,5 +96,8 @@ Route::prefix('profs')->group(function(){
    //absenteleve
    Route::get('absentstudent',[AbsenteleveController::class,'index'])->name('absentstudent.index');
    Route::get('classe/{classe}/eleves',[ClasseController::class,'eleves'])->name('classe.eleves');
+   Route::get('classe/{classe}/examens',[ClasseController::class,'examens'])->name('classe.examens');
  //examen
    Route::resource('/examen', ExamensController::class);
+   //note
+   Route::resource('note',NoteController::class);

@@ -15,7 +15,7 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Product</h2>
+                <h2>Modifier matiere</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('matiere.index') }}"> Retour</a>
@@ -41,7 +41,7 @@
               @csrf
               @method('PATCH')
               <label for="nom">Nom</label>
-              <input type="text" class="form-control" name="nom" value="{{ $matiere->nom }}"/>
+              <input type="text" class="form-control"  name="nom" value="{{ $matiere->nom }}"/>
             
           </div>
         

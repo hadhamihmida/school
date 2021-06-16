@@ -12,7 +12,7 @@ class note extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable=['note','moyenne','eleve_id','examen_id','remarque'];
+    protected $fillable=['note','eleve_id','examen_id','remarque'];
 
     public function eleve()
     {

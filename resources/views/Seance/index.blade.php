@@ -11,7 +11,9 @@
         <div class="col-lg-12 margin-tb">
             
             <div class="pull-right">
-                <a class="btn btn-secondary" href="{{ route('seance.create') }}"> Ajoute seance </a>
+            
+                <a class="btn btn-secondary float-right btn-sm" href="{{ route('seance.create') }}"><i class="fa fa-list"></i> Ajoute seance </a>
+               
             </div>
         </div>
     </div>
@@ -22,6 +24,7 @@
       {{ session()->get('success') }}  
     </div><br />
   @endif
+ 
   <table class="table">
     <thead>
         <tr class="table-light">
@@ -59,6 +62,8 @@
         @endforeach
     </tbody>
   </table>
+  {{$seances->links('pagination.input')}}
+  
 <div>
 
 @endsection

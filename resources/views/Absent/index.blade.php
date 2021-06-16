@@ -11,7 +11,7 @@
         <div class="col-lg-12 margin-tb">
             
             <div class="pull-right">
-                <a class="btn btn-secondary" href="{{ route('profsabsents') }}"> Listes des absents</a>
+                <a class="btn btn-secondary float-right btn-sm" href="{{ route('profsabsents') }}"><i class="fa fa-list"></i> Listes des absents</a>
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@
         <div class="col-lg-12 margin-tb">
             
             <div class="pull-right">
-                <a class="btn btn-secondray" href="{{ route('examen.create') }}"> Listes des examens</a>
+                <a class="btn btn-secondary float-right btn-sm" href="{{ route('examen.create') }}"><i class="fa fa-list"></i> Listes des examens</a>
             </div>
         </div>
     </div>
