@@ -69,7 +69,7 @@
               <div class="inner">
                 <h3>{{$eleves_count_per_annee[$key]}}</h3>
 
-                <p>eleves in {{$value}}</p>
+                <p>eleves de {{$value}}</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-stalker"></i>

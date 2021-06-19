@@ -13,7 +13,7 @@
 
 <div class="card push-top">
   <div class="card-header">
-    Identifier classe
+    Ajouter un absence
   </div>
 
   <div class="card-body">

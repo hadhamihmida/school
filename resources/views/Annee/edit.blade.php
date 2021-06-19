@@ -13,7 +13,7 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Modifier les classes</h2>
+                <h2>Modifier les Niveaux</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('annee.index') }}"> Retour</a>

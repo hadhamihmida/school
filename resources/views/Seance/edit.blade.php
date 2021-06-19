@@ -13,7 +13,7 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>EditSeance</h2>
+                <h2>Modifier Séance</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('seance.index') }}"> Retour</a>
@@ -62,7 +62,7 @@
 
        <div class="form-group col-md-4">
         <select class="form-control" id="annee_id" name="annee_id">
-        <option value="">Select Annee</option>
+        <option value="">Selecte Année</option>
          @foreach($Annees as $annee)
          <option value="{{ $annee->id}}"   {{ ($seance->classe->annee_id)==$annee->id ? 'selected': ''}} >
           {{$annee->nom }}
@@ -74,7 +74,7 @@
 
       <div class="form-group col-md-4">
           <select class="form-control" id="classe_id" name="classe_id">
-              <option value="">Select Classe</option>
+              <option value="">Selecte Classe</option>
           </select>
       </div>
 

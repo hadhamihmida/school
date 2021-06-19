@@ -16,7 +16,7 @@ class MatiereController extends Controller
     public function index()
     {
        
-         $matieres = Matieres::with('annee')->paginate(2);
+         $matieres = Matieres::with('annee')->paginate(4);
         return view('matiere.index', compact('matieres'));
 
     }

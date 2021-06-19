@@ -17,7 +17,7 @@
                                    <th style="font: size 13px">prenom</th>
                                    <th style="font: size 13px">email</th>
                                    <th style="font: size 13px">cin</th>
-                                   <th style="font: size 13px">Matiere</th>
+                                   <th style="font: size 13px">Spécialité</th>
                                    <th style="font: size 13px">date_naissance</th>
                                    <th style="font: size 13px">adresse</th>
                                    <th style="font: size 13px">Experience</th>

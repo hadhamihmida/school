@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\parents;
 use App\Models\Classe;
+use App\Models\exman;
 
 class eleves extends Model
 {
@@ -29,6 +30,10 @@ class eleves extends Model
     public function classe()
     {
         return $this->belongsTo(Classe::class);
+    }
+    public function exmans()
+    {
+        return $this->belongsToMany(exman::class,'notes','eleve_id','examen_id');
     }
 
 }

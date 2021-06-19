@@ -13,7 +13,7 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>EditSeance</h2>
+                <h2>Modifier Séance</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('examen.index') }}"> Retour</a>
@@ -44,7 +44,7 @@
           </div>
        <div class="form-group col-md-4">
         <select class="form-control" id="annee_id" name="annee_id">
-        <option value="">Select Annee</option>
+        <option value="">Selecte Année</option>
          @foreach($annees as $annee)
          <option value="{{ $annee->id}}" {{$examen->classe->annee_id == $annee->id ? "selected" : ""}}>
           {{$annee->nom }}
@@ -56,7 +56,7 @@
 
       <div class="form-group col-md-4">
           <select class="form-control" id="classe_id" name="classe_id">
-              <option value="">Select Classe</option>
+              <option value="">Selecte Classe</option>
           </select>
 
           
@@ -64,7 +64,7 @@
       </div>
       <div class="form-group col-md-4">
         <select class="form-control" id="matiere_id" name="matiere_id">
-        <option value="">Select Matiere</option>
+        <option value="">Selecta Matière</option>
         
         </select>
     </div>

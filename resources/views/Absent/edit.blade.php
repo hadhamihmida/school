@@ -41,7 +41,7 @@
               <input type="text" class="form-control" name="nom" value="{{ $absent->prof->nom.$absent->prof->prenom}}"/>
           </div>
           <div class="form-group">
-              <label for="matiere">Matiere</label>
+              <label for="matiere">Matière</label>
               <input type="string" class="form-control" name="matiere" value="{{ $absent->matiere->nom }}"/>
           </div>
           <div class="form-group">

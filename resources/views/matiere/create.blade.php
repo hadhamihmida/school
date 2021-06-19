@@ -7,7 +7,7 @@
 
 <div class="card push-top">
   <div class="card-header">
-    Ajoute Matiéres
+    Identifier Matière
   </div>
 
   <div class="card-body">
@@ -31,7 +31,7 @@
           </div>
       
           <div class="form-group">
-              <label for="nombre">nombre</label>
+              <label for="nombre">Cofficient</label>
               <input type="int" class="form-control" name="nombre" value="{{old('nombre')}}" />
               @error('nombre')
               <small class="form-text text-danger">{{$message}}</small>

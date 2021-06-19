@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Classe;
 use App\Models\Matieres;
+use App\Models\eleves;
 
 
 
@@ -25,6 +26,11 @@ class exman extends Model
     public function matiere()
     {
         return $this->belongsTo(Matieres::class);
+    }
+
+    public function eleves()
+    {
+        return $this->belongsToMany(eleves::class,'notes');
     }
 
 }

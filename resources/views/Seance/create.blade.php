@@ -6,7 +6,7 @@
 
 <div class="card push-top">
   <div class="card-header">
-    Ajoute seance
+    Identifier séance
   </div>
 
   <div class="card-body">
@@ -40,14 +40,14 @@
           <div class="form-group row">
             <label for="example-time-input" class="col-2 col-form-label">Heure_debut</label>
               <div class="col-10">
-               <input class="form-control" type="time" name="heure_debut" value="13:45:00" id="example-time-input">
+               <input class="form-control" type="time" name="heure_debut"  id="example-time-input">
              </div>
          </div>
 
          <div class="form-group row">
          <label for="example-time-input" class="col-2 col-form-label">Heure_fin</label>
            <div class="col-10">
-             <input class="form-control" type="time" name="heure_fin" value="13:45:00" id="example-time-input">
+             <input class="form-control" type="time" name="heure_fin"  id="example-time-input">
           </div>
        </div>
          
@@ -64,7 +64,7 @@
 
     <div class="form-group col-md-4">
         <select class="form-control" id="annee_id" name="annee_id">
-        <option value="">Select Annee</option>
+        <option value="">Selecte Année</option>
          @foreach($Annees as $annee)
          <option value="{{ $annee->id}}"   {{ (@$editData->classe->annee_id)==$annee->id ? 'selected': ''}} >
           {{$annee->nom }}
@@ -76,7 +76,7 @@
 
       <div class="form-group col-md-4">
           <select class="form-control" id="classe_id" name="classe_id">
-              <option value="">Select Classe</option>
+              <option value="">Selecte Classe</option>
           </select>
       </div>
 

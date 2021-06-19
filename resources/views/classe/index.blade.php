@@ -28,7 +28,7 @@
           <td>ID</td>
           <td>Capaciter</td>
           <td>Numérotation</td>
-          <td>Anneé</td>
+          <td>Année</td>
          
           <td class="text-center">Action</td>
         </tr>

@@ -58,7 +58,7 @@ Route::prefix('profs')->group(function(){
         Route::get('edit/{id}',[StudentController::class, 'edit'])->name('edit.Student');
         Route::get('destroy/{id}',[StudentController::class,'destroy'])->name('destroy.Student');
     });
-
+    Route::get('eleves/{id}/exmans',[StudentController::class,'exmans']);
     //parents
     Route::prefix('Parents')->group(function(){
         Route::get('/view',[ParentController::class,'view'])->name('view.Parent');
@@ -101,3 +101,14 @@ Route::prefix('profs')->group(function(){
    Route::resource('/examen', ExamensController::class);
    //note
    Route::resource('note',NoteController::class);
+   Route::get('notes/affiche',[NoteController::class,'affiche'])->name('note.affiche');
+
+   /**
+    * note =>get => index
+    * note/create =>get => create
+    * note =>post => store
+    * note/{ïd} =>get => show
+    * note/{ïd}/edit =>get => edit
+    * note/{ïd}/update =>put => update
+    * note/{ïd}/destory =>delete => destory
+    */

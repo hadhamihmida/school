@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> Affiche les classes</h2>
+                <h2> Afficher les classes</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('classe.index') }}"> Retour</a>

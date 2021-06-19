@@ -36,7 +36,7 @@ class absentController extends Controller
     }
    // all()->load
    public function absents(){
-    $absents = profabsents::with(['seance','prof','matiere'])->paginate(1);
+    $absents = profabsents::with(['seance','prof','matiere'])->paginate(3);
     return view('Absent.index',compact('absents'));
 
  }

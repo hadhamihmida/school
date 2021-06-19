@@ -15,7 +15,7 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Modifier matiere</h2>
+                <h2>Modifier Matière</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('matiere.index') }}"> Retour</a>
@@ -52,7 +52,7 @@
 
           <div class="form-group col-md-4">
         <select class="form-control" name="annee_id">
-        <option value="" >Select</option>
+        <option value="" >Selecte</option>
       
          @foreach($annees as $annee)
          <option value="{{ $annee->id  }}" {{$matiere->annee_id == $annee->id ? 'selected':''}}>

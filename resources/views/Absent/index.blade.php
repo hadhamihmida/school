@@ -27,7 +27,7 @@
         <tr class="table-light">
           <td>ID</td>
           <td>Nom</td>
-          <td>Matiere</td>
+          <td>Matière</td>
           <td>date</td>
 
           <td class="text-center">Action</td>

@@ -26,9 +26,9 @@
     <thead>
         <tr class="table-light">
           <td>ID</td>
-          <td>Annee</td>
+          <td>Année</td>
           <td>Classe</td>
-          <td>Matiere</td>
+          <td>Matière</td>
           <td>Date</td>
 
           <td class="text-center">Action</td>

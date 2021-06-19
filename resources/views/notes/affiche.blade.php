@@ -1,19 +1,16 @@
 @extends('layouts.master')
   @section('content')
-  <div class="card">
+
+<div class="card">
     <div class="card-header">
-        <h3> Identifier examen    </h3>
+        <h3> Examen    </h3>
     </div>
     <div class="card-body">
         <div class="form-row">
 
- 
- 
-        <form method="post" action="{{ route('examen.store') }}">
-         
-              @csrf
-              <div class="form-row">
-            <div class="form-group col-md-12">
+
+
+            <div class="form-group col-md-4">
                 <select class="form-control" id="annee_id">
                 <option value="">Select Annee</option>
                 @foreach($annees as $annee)
@@ -22,27 +19,25 @@
                 </option>
                 @endforeach
                 </select>
-           </div>
-           <div class="form-group col-md-12">
+            </div>
+
+            <div class="form-group col-md-4">
                 <select class="form-control" id="classe_id" name="classe_id">
                     <option value="">Select Classe</option>
                 </select>
             </div>
-
-            <div class="form-group col-md-12">
-                <select class="form-control" id="matiere_id" name="matiere_id">
-                    <option value="">Select Matiere</option>
-                   
+            <div class="form-group col-md-4">
+                <select class="form-control" id="eleve_id" name="eleve_id">
+                    <option value="">Select Eleve</option>
                 </select>
             </div>
+        </div>
+       
+        <div class="row">
+            <div class="col-md-12" id="affiche">
 
-        <div class="form-group col-md-12">
-        <label for="date">Date</label>
-              <input type="date" class="form-control" name="date"/>
-          </div>
-          <button type="submit" class="btn btn-block btn-danger">Enregistrer</button>
-        </form>
-
+            </div>
+        </div>
 
     </div>
 </div>
@@ -68,14 +63,17 @@
                        console.log(error)
                     }
                 });
+            });
+            $('body').on('change','#classe_id',function(e){
+                var classe_id = e.target.value;
                 $.ajax({
-                   url:`{{route('annee.index')}}/${annee_id}/matieres`,
+                   url:`{{route('classe.index')}}/${classe_id}/eleves`,
                     success:function (data){
-                        console.log(data)
-                        $('#matiere_id').html(`<option value="">Select 2 matiere</option>`);
+                        console.log(data);
+                        $('#eleve_id').html(`<option value="">Select 2 eleve</option>`);
                        data.forEach(function (value,index){
-                            $('#matiere_id').append(`
-                                <option value="${value.id}">${value.nom}</option>
+                            $('#eleve_id').append(`
+                                <option value="${value.id}">${value.nom_el} ${value.prenom_el}</option>
                             `);
                        });
                     },
@@ -84,14 +82,23 @@
                     }
                 });
             });
-           
+            $('body').on('change','#eleve_id',function(e){
+                var eleve_id = e.target.value;
+                $.ajax({
+                   url:`{{url('eleves')}}/${eleve_id}/exmans`,
+                    success:function (data){
+                        console.log(data);
+                        
+                    },
+                    error:function (error){
+                       console.log(error)
+                    }
+                });
+            });
             $('#print').click(function(e){
                 $('table').printThis({
                     header: `
-                    <div>
-                   <h3> Annee : ${$('#print').data('annee')}</h3>
-                   <h3> Classe : ${$('#print').data('classe')}</h3>
-                    </div>
+                   
                     `,
                 });
             });
@@ -100,3 +107,4 @@
     </script>
 
 @endsection()
+

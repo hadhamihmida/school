@@ -118,7 +118,7 @@
                                     <td>${value[1].heure_fin}</td>
                                     <td>${value[1].prof.nom}</td>
                                     <td>${value[1].prof.matiere.nom}</td>
-                                    <td><a href="{{url('/absent_prof')}}/${value[1].id}">add absent</a></td></tr>
+                                    <td><a href="{{url('/absent_prof')}}/${value[1].id}">Ajoute absent</a></td></tr>
                                     `;
                                 });
                                 table=`<td>${seances_to_show}</td>`;

@@ -34,7 +34,7 @@
           <td>Date_fin</td>
           <td>Profs</td>
           <td>Classe</td>
-          <td>Annee</td>
+          <td>Année</td>
           <td class="text-center">Action</td>
         </tr>
     </thead>

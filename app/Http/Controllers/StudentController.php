@@ -118,4 +118,9 @@ public function update( Request $request ,eleves $eleve){
        return redirect()->route('eleve.Student')->with('completed', 'seance suprimer!!');
     
    }
+
+
+   public function exmans(eleves $eleve){
+      return response()->json($eleve->exmans()->get());
+   }
 }

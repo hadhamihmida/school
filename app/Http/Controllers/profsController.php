@@ -71,7 +71,7 @@ class profsController extends Controller
     
     public function view(){
 
-        $allData = Profs::with('matiere')->paginate(1);
+        $allData = Profs::with('matiere')->paginate(5);
         return view('profs-view',compact('allData'));
     }
     

@@ -70,7 +70,7 @@ class NoteController extends Controller
      */
     public function show($id)
     {
-        //
+        dd($id);
     }
 
     /**
@@ -105,5 +105,10 @@ class NoteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function affiche(){
+        $annees = Annee::all();
+        return view('notes.affiche',compact('annees'));
     }
 }

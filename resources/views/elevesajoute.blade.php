@@ -3,7 +3,7 @@
 
         <div class="card">
         <div class="card-header">
-        <h3> Identifier élèves:    </h3>
+        <h3> Identifier élèves    </h3>
         </div>
            <div class="card-body">
 
@@ -11,21 +11,22 @@
   @csrf
   <div class="form-row">
     <div class="form-group col-md-4">
-      <input name="nom_el" type="text" class="form-control" value="{{old('nom_el')}}"  value="{{ (@$editData->nom_el) }}"   placeholder=" nom_élève">
+      <input name="nom_el" type="text"    class="form-control"  value="{{ (@$editData->nom_el) }}"  >
       @error('nom_el')
               <small class="form-text text-danger">{{$message}}</small>
               @enderror
     </div>
 
       <div class="form-group col-md-4">
-          <input name="prenom_el"   type="text" class="form-control" value="{{old('prenom_el')}}"   value="{{ (@$editData->prenom_el) }}"   placeholder=" prenom_élève">
+          <input name="prenom_el"   type="text"  
+               class="form-control" value="{{ (@$editData->prenom_el) }}"  >
           @error('prenom_el')
               <small class="form-text text-danger">{{$message}}</small>
               @enderror
       </div>
 
       <div class="form-group col-md-4" >
-          <input   name="date_naiss" type="date" class="form-control" value="{{old('date_naiss')}}" value="{{ (@$editData->date_naiss) }}"    placeholder="Date_Naissance">
+          <input   name="date_naiss" type="date"     class="form-control" value="{{ (@$editData->date_naiss) }}"    >
           @error('date_naiss')
               <small class="form-text text-danger">{{$message}}</small>
               @enderror
@@ -48,7 +49,7 @@
 
     <div class="form-group col-md-4">
         <select class="form-control" id="annee_id" name="annee_id" value="{{old('annee_id')}}">
-        <option value="">Select Annee</option>
+        <option value="">Selecte Année</option>
          @foreach($annees as $annee)
          <option value="{{ $annee->id}}"   {{ (@$editData->classe->annee_id)==$annee->id ? 'selected': ''}} >
           {{$annee->nom }}
@@ -62,7 +63,7 @@
 
       <div class="form-group col-md-4">
           <select class="form-control" id="classe_id"  name="classe_id" vlue="{{old('classe_id')}}">
-              <option value="">Select Classe</option>
+              <option value="">Selecte Classe</option>
           </select>
           @error('classe_id')
               <small class="form-text text-danger">{{$message}}</small>

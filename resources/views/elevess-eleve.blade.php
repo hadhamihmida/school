@@ -10,11 +10,11 @@
                             <thead>
                                 <tr>
                                    <th style="font: size 13px">id</th>
-                                   <th style="font: size 13px">nom_E</th>
-                                   <th style="font: size 13px">prenom_E</th>
+                                   <th style="font: size 13px">nom</th>
+                                   <th style="font: size 13px">prenom</th>
                                    <th style="font: size 13px">date_naiss</th>
                                    <th style="font: size 13px">classe</th>
-                                   <th style="font: size 13px">Annee</th>
+                                   <th style="font: size 13px">Année</th>
                                    <th style="font: size 13px">Parent</th>
                                    <th style="font: size 13px">Image</th>
                                    <th style="font: size 13px">action</th>

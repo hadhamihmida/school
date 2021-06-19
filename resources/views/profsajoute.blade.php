@@ -57,7 +57,7 @@
 
         <div class="form-group col-md-4">
         <select class="form-control" id="matiere_id" name="matiere_id">
-        <option value="">Select Matiere</option>
+        <option value="">Spécialité</option>
          @foreach($matieres as $matiere)
          <option value="{{ $matiere->id }}" {{ (@$editData->matiere_id)==$matiere->id ? 'selected': ''}}>
           {{$matiere->nom }}
