@@ -12,8 +12,8 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('matiere.create') }}"> Create New Product</a>
+            <div class="end">
+                <a class="btn btn-secondary float-right btn-sm" href="{{ route('matiere.create') }}"><i class="fa fa-list"></i> Ajoute matiere</a>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
   @endif
   <table class="table">
     <thead>
-        <tr class="table-warning">
+        <tr class="table-light">
           <td>ID</td>
           <td>Nom</td>
           <td>Nombre</td>
@@ -35,7 +35,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($matiere as $matiere)
+        @foreach($matieres as $matiere)
         <tr>
             <td>{{$matiere->id}}</td>
             <td>{{$matiere->nom}}</td>
@@ -43,18 +43,20 @@
             <td> {{  $matiere->annee->nom}}</td>
             <td class="text-center">
                 <form action="{{ route('matiere.destroy', $matiere->id) }}" method="post" style="display: inline-block">
+    
                 
                 <a href="{{ route('matiere.edit', $matiere->id)}}" class="btn btn-primary btn-sm">Modifier</a> 
 
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger btn-sm" type="submit">Supprimer</button>
+                    <button class="btn btn-warning btn-sm delete"  type="submit">Supprimer</button>
                   </form>
             </td>
         </tr>
         @endforeach
     </tbody>
   </table>
+      {{$matieres->links('pagination.input')}}
 <div>
 
 @endsection

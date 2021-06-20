@@ -23,6 +23,7 @@ class CreateParentsTable extends Migration
             $table->string('adresse');
             $table->integer('nombre');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

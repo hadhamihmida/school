@@ -15,9 +15,9 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        $classe = Classe::all()->load('annee');
-        
-        return view('classe.index', compact('classe'));
+        $classes = Classe::with('annee')->paginate(5);
+        //dd($classe);
+        return view('classe.index', compact('classes'));
     }
 
     /**
@@ -51,6 +51,15 @@ class ClasseController extends Controller
    
         return redirect()->route('classe.index')
                         ->with('success','Classe creer avec succeés.');
+    }
+
+    public function getMessages(){
+        return $messages =[
+            'capaciter.required'=>'tapez capaciter',
+            'numérotation.required'=>'tapez numérotaion',
+            'annee_id.required'=>'tapez annees',
+
+        ];
     }
 
     /**
@@ -107,9 +116,29 @@ class ClasseController extends Controller
     public function destroy($id)
     {
         $classe = Classe::findOrFail($id);
+        
+       // foreach($classe->annee as $annee){
+          //  $annee->delete();
+       // }
+       // foreach($classe->eleves as $eleves){
+          //  $eleves->delete();
+       // }
+       //foreach($classe->seance as $seance){
+         //  $seance->delete();
+      // }
+      
         $classe->delete();
 
-        return redirect('/classe')->with('completed', 'classe suprimer!!');
+        //return redirect('/classe')->with('completed', 'classe suprimer!!');
+        
+        return redirect()->route('classe.index')->with('completed', 'classe suprimer!!');
     }
-    
+     public function eleves(Classe $classe){
+         
+        return response()->json($classe->eleves);
+     }
+     public function examens(Classe $classe){
+
+         return response()->json($classe->examens->load('matiere'));
+     }
 }

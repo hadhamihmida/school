@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Models\Parents; // why use this, there is no Parents model. it is wrong
-use App\Models\parents; // right
+use App\Models\parents; 
 
 class ParentController extends Controller{
 
@@ -44,10 +43,21 @@ class ParentController extends Controller{
 
          }
 
+         public function getMessages(){
+             return $messages=[
+                 'nom_pr.required'=>'tapez nom parent',
+                 'prenom_pr.required'=>'tapez prenom de parent',
+                 'email.required'=>'tapez email',
+                 'cin.required'=>'tapez cin',
+                 'tel.required'=>'tapez le numero de tel',
+                 'nombre.required'=>'tapez le nombre',
+             ];
+         }
+
 
          public function view(){
 
-             $allData = Parents::all();
+             $allData = Parents::paginate(4);
              return view('Parents-view',compact('allData'));
          }
 
@@ -94,8 +104,19 @@ class ParentController extends Controller{
          return redirect()->route('view.Parent')->with($notification);
 
 
-
          }
+
+         public function destroy($id)
+    {
+        $parent = parents::findOrFail($id);
+        foreach($parent->eleves as $eleve){
+            $eleve->delete();
+        }
+        $parent->delete();
+
+        return redirect()->route('view.Parent')->with('completed', 'Parent suprimer!!');
+    }
+    
 
 
 }

@@ -7,7 +7,7 @@
 
 <div class="card push-top">
   <div class="card-header">
-    Ajoute Matiéres
+    Identifier Matière
   </div>
 
   <div class="card-body">
@@ -24,12 +24,18 @@
           <div class="form-group">
               @csrf
               <label for="nom">Nom</label>
-              <input type="text" class="form-control" name="nom"/>
+              <input type="text" class="form-control" name="nom" value="{{old('nom')}}"/>
+              @error('nom')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
           </div>
       
           <div class="form-group">
-              <label for="nombre">nombre</label>
-              <input type="int" class="form-control" name="nombre"/>
+              <label for="nombre">Cofficient</label>
+              <input type="int" class="form-control" name="nombre" value="{{old('nombre')}}" />
+              @error('nombre')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
           </div>
 
           <div class="form-group col-md-4">
@@ -40,7 +46,9 @@
          </option>
          @endforeach
         </select>
-
+        @error('annee_id')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
     </div>
 
 

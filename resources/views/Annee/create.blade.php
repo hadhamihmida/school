@@ -13,7 +13,7 @@
 
 <div class="card push-top">
   <div class="card-header">
-    Identifier classe
+    Identifier Année
   </div>
 
   <div class="card-body">
@@ -30,7 +30,10 @@
           <div class="form-group">
               @csrf
               <label for="capaciter">Nom</label>
-              <input type="text" class="form-control" name="nom"/>
+              <input type="text" class="form-control" name="nom" value="{{old('nom')}}"/>
+              @error('nom')
+              <small class="form-text text-danger">{{$message}}</small>
+              @enderror
           </div>
          
           

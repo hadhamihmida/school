@@ -14,8 +14,8 @@ class StudentController extends Controller
    public function eleve()
    {
 
-      $allData = eleves::all()->load(['parent','classe.annee']);
-
+      $allData = eleves::with(['parent','classe.annee'])->paginate(3);
+      //dd($allData);
      return view('elevess-eleve',compact('allData'));
    }
 
@@ -23,6 +23,7 @@ class StudentController extends Controller
 
      $annees = Annee::all();
      $parents= parents::all();
+
 
       return view('elevesajoute',compact('parents','annees'));
 
@@ -58,7 +59,16 @@ class StudentController extends Controller
       //back()->with($notification);
 
    } 
-
+   public function getMessages(){
+    return $messages =[
+         'nom_el.required'=>'tapez le nom',
+         'prenom_el.required'=>'tapez le prenom ',
+         'date_naiss.required'=>'tapez date de naissance',
+         'image.required'=>'entrer image',
+         'parent_id.required'=>'tapez le nom de parent',
+         'classe_id.required'=>'tapez le classe',
+     ];
+    }
  public function delete($id){
 
    eleves::find($id)->delete();
@@ -97,13 +107,20 @@ public function update( Request $request ,eleves $eleve){
              'alert-type'=>'success'
          );
          return redirect()->route('eleve.Student')->with($notification);
-         }
+   }  
+
+   public function destroy($id)
+   {
+      //Students
+       $eleve = eleves::findOrFail($id);
+       $eleve->delete();
+
+       return redirect()->route('eleve.Student')->with('completed', 'seance suprimer!!');
+    
+   }
 
 
-
-      // for demo purpose
-      //public function demo(){
-             //  return view('sample');
-      //}
-
+   public function exmans(eleves $eleve){
+      return response()->json($eleve->exmans()->get());
+   }
 }

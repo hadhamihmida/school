@@ -8,7 +8,11 @@
         <h3> Insert vos Information </h3>
       </div>
     </div>
-
+    <div>
+    @foreach($errors->all() as $error)
+    <div class="alert alert-danger">{{$error}}</div>
+    @endforeach
+    </div>
     <div class="card-body">
       <form methode="post" action="{{ (@$editData)?route('update.profs', @$editData->id): route('store.profs') }}" enctype="multipart/from-data">
         @csrf
@@ -53,7 +57,7 @@
 
         <div class="form-group col-md-4">
         <select class="form-control" id="matiere_id" name="matiere_id">
-        <option value="">Select Matiere</option>
+        <option value="">Spécialité</option>
          @foreach($matieres as $matiere)
          <option value="{{ $matiere->id }}" {{ (@$editData->matiere_id)==$matiere->id ? 'selected': ''}}>
           {{$matiere->nom }}

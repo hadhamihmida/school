@@ -2,7 +2,7 @@
   @section('content')
     <div class="card">
         <div class="card-header">
-        <a class="btn btn-success float-right btn-sm" href="{{ route('ajoute.Student') }}"><i class="fa fa-list"></i>Ajout</a>
+        <a class="btn btn-secondary float-right btn-sm" href="{{ route('ajoute.Student') }}"><i class="fa fa-list"></i>Ajout</a>
         <h3> Liste d'information:    </h3>
         </div>
            <div class="card-body">
@@ -10,11 +10,11 @@
                             <thead>
                                 <tr>
                                    <th style="font: size 13px">id</th>
-                                   <th style="font: size 13px">nom_E</th>
-                                   <th style="font: size 13px">prenom_E</th>
+                                   <th style="font: size 13px">nom</th>
+                                   <th style="font: size 13px">prenom</th>
                                    <th style="font: size 13px">date_naiss</th>
                                    <th style="font: size 13px">classe</th>
-                                   <th style="font: size 13px">Annee</th>
+                                   <th style="font: size 13px">Année</th>
                                    <th style="font: size 13px">Parent</th>
                                    <th style="font: size 13px">Image</th>
                                    <th style="font: size 13px">action</th>
@@ -33,8 +33,16 @@
                                  <img  src="{{(!empty($data->image))?url('/').'/upload/'.$data->image:url('upload/no_images.png')}}" style="width: 100px; height:100px; border:1px solid #000;"></a></td>
 
                                  <td>
-                                   <a title="Edit" class="btn btn-sm btn-primary" href="{{ route('edit.Student' ,$data->id ) }}">Modifier</a>
-                                  <a title="Delete"  id="delete" class="btn btn-sm btn-danger" href="{{ route('delete.Student', $data->id) }}">Supprimer</a>
+                                   
+                                  <form action="{{ route('destroy.Student', $data->id)}}" method="get" style="display: inline-block">
+              
+                                   <a href="{{ route('edit.Student' ,$data->id)}}" class="btn btn-primary btn-sm">Modifier</a>
+
+                                      @csrf
+                                          @method('DELETE')
+                                      <button class="btn btn-warning btn-sm delete" type="submit">Supprimer</button>
+                              </form>
+                                  
                               </td>
 
                          </tr>
@@ -42,7 +50,7 @@
                          @endforeach
                            </thead>
                        </table>
-
+                    {{$allData->links('pagination.input')}}
 
           </div>
 

@@ -5,10 +5,15 @@ use App\Http\Controllers\profsController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\MatiereController;
-// you didnot add calender class here
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\AnneeController;
+use App\Http\Controllers\SeancesController;
+use App\Http\Controllers\TempsController;
+use App\Http\Controllers\absentController;
+use App\Http\Controllers\AbsenteleveController;
+use App\Http\Controllers\ExamensController;
+use App\Http\Controllers\NoteController;
 /*
 
 /*
@@ -27,6 +32,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 //Professeures
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('profs')->group(function(){
@@ -36,6 +42,7 @@ Route::prefix('profs')->group(function(){
     Route::get('update/{id}',[profsController::class,'update'])->name('update.profs');
     Route::get('delete/{id}',[profsController::class,'delete'])->name('delete.profs');
     Route::get('edit/{id}',[profsController::class,'edit'])->name('edit.profs');
+    Route::get('destroy/{id}',[profsController::class,'destroy'])->name('destroy.profs');
     });
     //élèves
     Route::prefix('elevess')->group(function(){
@@ -49,8 +56,9 @@ Route::prefix('profs')->group(function(){
         Route::get('ajoute',[StudentController::class, 'ajoute'])->name('ajoute.Student');
         Route::get('delete/{id}',[StudentController::class,'delete'])->name('delete.Student');
         Route::get('edit/{id}',[StudentController::class, 'edit'])->name('edit.Student');
+        Route::get('destroy/{id}',[StudentController::class,'destroy'])->name('destroy.Student');
     });
-
+    Route::get('eleves/{id}/exmans',[StudentController::class,'exmans']);
     //parents
     Route::prefix('Parents')->group(function(){
         Route::get('/view',[ParentController::class,'view'])->name('view.Parent');
@@ -59,22 +67,48 @@ Route::prefix('profs')->group(function(){
         Route::post('update/{parent}',[ParentController::class,'update'])->name('update.Parent');
         Route::get('delete/{id}',[ParentController::class,'delete'])->name('delete.Parent');
         Route::get('edit/{id}',[ParentController::class,'edit'])->name('edit.Parent');
+        Route::get('destroy/{id}',[ParentController::class,'destroy'])->name('destroy.Parent');
         });
-        //matiéres
+    //matiéres
         Route::resource('/matiere', MatiereController::class);
+        Route::get('annee/{annee}/matieres', [AnneeController::class,'matieres']);
+
         //classe
         Route::resource('/classe', ClasseController::class);
+
+
        //Annee
        Route::resource('/annee', AnneeController::class);
        Route::get('annee/{annee}/classes',[AnneeController::class,'classes'])->name('annee.classes');
 
-     //calendreier
-     Route::get('fullcalender', [FullCalenderController::class, 'index']);
-     Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
+//seance
+      Route::resource('/seance', SeancesController::class);
+//temps
+     Route::get('temps',[TempsController::class,'index'])->name('temps.index');
+     Route::get('temps/{classe}',[TempsController::class,'temps']);
+//teachersabsents
+    Route::get('absent_prof/{seance}',[TempsController::class,'temps2']);
+    Route::post('absent_prof/{seance}/create',[absentController::class,'create'])->name('absent_prof.create');
+   Route::get('absent_profs',[absentController::class,'absents'])->name('profsabsents');
+   Route::get('edit/{id}',[absentController::class,'edit'])->name('absent.edit');
+   Route::delete('absent_prof/{seance}/destroy',[absentController::class,'destroy'])->name('absent.destroy');
+   Route::patch('update/{id}',[absentController::class,'update'])->name('absent.update');
+   //absenteleve
+   Route::get('absentstudent',[AbsenteleveController::class,'index'])->name('absentstudent.index');
+   Route::get('classe/{classe}/eleves',[ClasseController::class,'eleves'])->name('classe.eleves');
+   Route::get('classe/{classe}/examens',[ClasseController::class,'examens'])->name('classe.examens');
+ //examen
+   Route::resource('/examen', ExamensController::class);
+   //note
+   Route::resource('note',NoteController::class);
+   Route::get('notes/affiche',[NoteController::class,'affiche'])->name('note.affiche');
 
-
-
-    // this is just for demo purpose
-    // Route::get('sample',[elevessController::class, 'demo'])->name('demo.sample');
-
-    // try school.test/sample, it should show sample.blade.php
+   /**
+    * note =>get => index
+    * note/create =>get => create
+    * note =>post => store
+    * note/{ïd} =>get => show
+    * note/{ïd}/edit =>get => edit
+    * note/{ïd}/update =>put => update
+    * note/{ïd}/destory =>delete => destory
+    */

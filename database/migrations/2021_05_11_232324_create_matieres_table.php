@@ -20,6 +20,7 @@ class CreateMatieresTable extends Migration
             $table->bigInteger('annee_id')->unsigned();
             $table->timestamps();
             $table->foreign('annee_id')->references('id')->on('annees')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 

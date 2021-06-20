@@ -26,6 +26,7 @@ class CreateProfsTable extends Migration
             $table->bigInteger('matiere_id')->unsigned()->index();
             $table->timestamps();
             $table->foreign('matiere_id')->references('id')->on('matieres')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 
