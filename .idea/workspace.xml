@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56fc943a-d3f0-48c5-b9e6-6a9b24716bcc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/full-calender.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/full-calender.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_11_233254_create_classes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_11_233254_create_classes_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +160,9 @@
       <workItem from="1621178685810" duration="769000" />
       <workItem from="1621236537134" duration="136000" />
       <workItem from="1621243330763" duration="807000" />
-      <workItem from="1621277292446" duration="3237000" />
+      <workItem from="1621277292446" duration="6664000" />
+      <workItem from="1621323918349" duration="15000" />
+      <workItem from="1624136055235" duration="3144000" />
     </task>
     <servers />
   </component>
