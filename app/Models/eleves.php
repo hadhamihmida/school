@@ -31,9 +31,16 @@ class eleves extends Model
     {
         return $this->belongsTo(Classe::class);
     }
-    public function exmans()
+    public function exmans(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(exman::class,'notes','eleve_id','examen_id');
+        return $this
+            ->belongsToMany(exman::class,'notes','eleve_id','examen_id')
+            ->withPivot(['note','remarque']);
+    }
+
+    public function notes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\note::class,'eleve_id');
     }
 
 }

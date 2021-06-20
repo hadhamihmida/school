@@ -32,10 +32,22 @@
                 </select>
             </div>
         </div>
-       
+
         <div class="row">
             <div class="col-md-12" id="affiche">
-
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Matiere</th>
+                        <th>Note</th>
+                        <th>Nombre</th>
+                        <th>Remarke</th>
+                        <th>multi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -87,8 +99,32 @@
                 $.ajax({
                    url:`{{url('eleves')}}/${eleve_id}/exmans`,
                     success:function (data){
-                        console.log(data);
-                        
+                       $('tbody').html('');
+                       let sumMulti=0;
+                       data.data.forEach(function (value,index){
+                           sumMulti+=value.multi;
+                           $('tbody').append( `
+                            <tr>
+                                <td>${value.matiere.nom}</td>
+                                <td>${value.pivot.note}</td>
+                                <td>${value.matiere.nombre}</td>
+                                <td>${value.pivot.remarque}</td>
+                                <td>${value.multi}</td>
+                            </tr>
+                           `)
+                       })
+                        $('tbody').append(`
+                            <tr>
+                                <td colspan="4">المجموع</td>
+                                <td>${sumMulti}</td>
+                            </tr>
+                           `);
+                        $('tbody').append(`
+                            <tr>
+                                <td colspan="4">المجموع النهائي</td>
+                                <td>${sumMulti/data.sum}</td>
+                            </tr>
+                           `);
                     },
                     error:function (error){
                        console.log(error)
@@ -98,7 +134,6 @@
             $('#print').click(function(e){
                 $('table').printThis({
                     header: `
-                   
                     `,
                 });
             });

@@ -1,4 +1,4 @@
-@extends('layouts.master') 
+@extends('layouts.master')
 
 @section('content')
 
@@ -9,22 +9,22 @@
 </style>
 <div class="row">
         <div class="col-lg-12 margin-tb">
-            
+
             <div class="pull-right">
-            
+
                 <a class="btn btn-secondary float-right btn-sm" href="{{ route('seance.create') }}"><i class="fa fa-list"></i> Ajoute seance </a>
-               
+
             </div>
         </div>
     </div>
-   
+
 <div class="push-top">
   @if(session()->get('success'))
     <div class="alert alert-success">
-      {{ session()->get('success') }}  
+      {{ session()->get('success') }}
     </div><br />
   @endif
- 
+
   <table class="table">
     <thead>
         <tr class="table-light">
@@ -32,7 +32,8 @@
           <td>Jour</td>
           <td>Date_debut</td>
           <td>Date_fin</td>
-          <td>Profs</td>
+            <td>Profs</td>
+            <td>matiere</td>
           <td>Classe</td>
           <td>Année</td>
           <td class="text-center">Action</td>
@@ -46,12 +47,13 @@
             <td>{{$seance->heure_debut}}</td>
             <td>{{$seance->heure_fin}}</td>
             <td> {{$seance->prof->nom.$seance->prof->prenom}}</td>
+            <td> {{$seance->matiere ?$seance->matiere ->nom : ''}}</td>
             <td> {{$seance->classe->numérotation}}</td>
             <td> {{$seance->classe->annee->nom}}
             <td class="text-center">
                 <form action="{{ route('seance.destroy', $seance->id) }}" method="post" style="display: inline-block">
-                
-                <a href="{{ route('seance.edit', $seance->id)}}" class="btn btn-primary btn-sm">Modifier</a> 
+
+                <a href="{{ route('seance.edit', $seance->id)}}" class="btn btn-primary btn-sm">Modifier</a>
 
                     @csrf
                     @method('DELETE')
@@ -63,7 +65,7 @@
     </tbody>
   </table>
   {{$seances->links('pagination.input')}}
-  
+
 <div>
 
 @endsection

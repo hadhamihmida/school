@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matieres;
 use Illuminate\Http\Request;
 use App\Models\Seance;
 use App\Models\Profs;
@@ -17,7 +18,7 @@ class SeancesController extends Controller
      */
     public function index()
     {
-        $seances = Seance::all()->load(['prof','classe.annee'])
+        $seances = Seance::all()->load(['prof','classe.annee','matiere'])
         ->each(function ($item, $key) {
                     $semaine=[
                         1=>'Lundi',
@@ -43,8 +44,9 @@ class SeancesController extends Controller
     public function create()
     {
         $Annees = Annee::all();
+        $matieres = Matieres::all()->load('annee');
         $profs= Profs::all();
-        return view('seance.create',compact('profs','Annees'));
+        return view('seance.create',compact('profs','Annees','matieres'));
     }
 
     /**
@@ -64,7 +66,7 @@ class SeancesController extends Controller
         ]);
 
        Seance::create($request->all());
-   
+
         return redirect()->route('seance.index')
                         ->with('success','seances creer avec succeés.');
     }
@@ -100,9 +102,10 @@ class SeancesController extends Controller
     public function edit($id)
     {
         $profs = Profs::all();
+        $matieres = Matieres::all()->load('annee');
         $Annees = Annee::all();
         $seance = Seance::findOrFail($id);
-        return view('seance.edit', compact('seance','profs','Annees'));
+        return view('seance.edit', compact('seance','profs','Annees','matieres'));
     }
 
     /**
@@ -121,12 +124,12 @@ class SeancesController extends Controller
             'classe_id'=> 'required',
             'profs_id'=> 'required',
         ]);
-    
+
         $seance->update($request->all());
-    
+
         return redirect()->route('seance.index')
                         ->with('success','seances updated successfully');
-           
+
     }
 
     /**
@@ -141,6 +144,6 @@ class SeancesController extends Controller
         $seance->delete();
 
         return redirect('/seance')->with('completed', 'seance suprimer!!');
-     
+
     }
 }

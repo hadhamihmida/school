@@ -1,4 +1,4 @@
-@extends('layouts.master') 
+@extends('layouts.master')
 
 @section('content')
 
@@ -50,7 +50,18 @@
              <input class="form-control" type="time" name="heure_fin"  id="example-time-input">
           </div>
        </div>
-         
+          <div class="form-group col-md-4">
+              <select class="form-control" id="matiere_id" name="matiere_id">
+                  <option value="">Spécialité</option>
+                  @foreach($matieres as $matiere)
+                      <option value="{{ $matiere->id }}" {{ (@$editData->matiere_id)==$matiere->id ? 'selected': ''}}>
+                          {{$matiere->nom .' ' . $matiere->annee->nom }}
+                      </option>
+                  @endforeach
+              </select>
+          </div>
+
+
     <div class="form-group col-md-4">
         <select class="form-control" id="profs_id" name="profs_id">
         <option value="">Select profs</option>
@@ -74,7 +85,10 @@
     </div>
 
 
-      <div class="form-group col-md-4">
+
+
+
+          <div class="form-group col-md-4">
           <select class="form-control" id="classe_id" name="classe_id">
               <option value="">Selecte Classe</option>
           </select>

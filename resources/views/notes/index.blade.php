@@ -27,7 +27,7 @@
                 </select>
             </div>
         </div>
-       
+
         <form action="{{route('note.store')}}" method="post">
             @csrf
             <div class="form-group col-md-4">
@@ -84,16 +84,16 @@
                             <input type="text" class="form-control" name="notes[${index}][note]" placeholder="note">
                             </div>
                            </div>
-                
+
                            <div class="col-3">
                             <div class="form-group">
                             <input type="text" class="form-control" name="notes[${index}][remarque]" placeholder="remarque">
                             </div>
                            </div>
                             `);
-                        
+
                        });
-                        
+
                     },
                     error:function (error){
                        console.log(error)
@@ -118,7 +118,7 @@
             $('#print').click(function(e){
                 $('table').printThis({
                     header: `
-                   
+
                     `,
                 });
             });

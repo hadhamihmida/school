@@ -18,7 +18,7 @@ class note extends Model
     {
         return $this->belongsTo(eleves::class);
     }
-                    
+
     public function examen()
     {
         return $this->belongsTo(exman::class);

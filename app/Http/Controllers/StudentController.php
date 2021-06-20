@@ -58,7 +58,7 @@ class StudentController extends Controller
         return redirect()->route('eleve.Student')->with($notification);
       //back()->with($notification);
 
-   } 
+   }
    public function getMessages(){
     return $messages =[
          'nom_el.required'=>'tapez le nom',
@@ -107,7 +107,7 @@ public function update( Request $request ,eleves $eleve){
              'alert-type'=>'success'
          );
          return redirect()->route('eleve.Student')->with($notification);
-   }  
+   }
 
    public function destroy($id)
    {
@@ -116,11 +116,17 @@ public function update( Request $request ,eleves $eleve){
        $eleve->delete();
 
        return redirect()->route('eleve.Student')->with('completed', 'seance suprimer!!');
-    
+
    }
 
 
    public function exmans(eleves $eleve){
-      return response()->json($eleve->exmans()->get());
+       $data=$eleve->load('exmans.matiere')->exmans()->get()->each(function ($item, $key){
+           $item->multi= $item->matiere->nombre*$item->pivot->note;
+       });
+      return response()->json([
+          'data'=>$data,
+          'sum'=>$data->pluck('matiere')->sum('nombre')
+      ]);
    }
 }

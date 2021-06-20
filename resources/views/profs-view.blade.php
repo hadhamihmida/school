@@ -9,7 +9,7 @@
                 </div>
 
                    <div class="card-body">
-                        <table id="myTable" class=" table table-striped table-bordered" style="width: 70%">
+                        <table id="myTable" class=" table table-striped table-bordered">
                             <thead>
                                 <tr>
                                    <th style="font: size 13px">id</th>
@@ -36,12 +36,12 @@
                                      <td>{{ $data->adresse }}</td>
                                      <td>{{ $data->experience}}</td>
                                      <td>{{ $data->tel }}</td>
-                                  
-                              <td>            
-                            
+
+                              <td>
+
 
                <form action="{{ route('destroy.profs', $data->id)}}" method="get" style="display: inline-block">
-              
+
               <a href="{{ route('edit.profs' ,$data->id)}}" class="btn btn-primary btn-sm">Modifier</a>
 
                   @csrf
