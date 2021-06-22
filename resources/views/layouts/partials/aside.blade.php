@@ -158,6 +158,13 @@
                                 <p> Gérer les examens</p>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                        <a href="{{route('note.index')}}" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Gérer les notes</p>
+                            </a>
+                        </li>
                         
                  
                         <li class="nav-item">

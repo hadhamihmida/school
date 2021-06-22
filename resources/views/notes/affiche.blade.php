@@ -40,9 +40,9 @@
                     <tr>
                         <th>Matiere</th>
                         <th>Note</th>
-                        <th>Nombre</th>
-                        <th>Remarke</th>
-                        <th>multi</th>
+                        <th>Cofficient</th>
+                        <th>Remarque</th>
+                        <th>multiple</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -115,13 +115,13 @@
                        })
                         $('tbody').append(`
                             <tr>
-                                <td colspan="4">المجموع</td>
+                                <td colspan="4">somme</td>
                                 <td>${sumMulti}</td>
                             </tr>
                            `);
                         $('tbody').append(`
                             <tr>
-                                <td colspan="4">المجموع النهائي</td>
+                                <td colspan="4">moyenne</td>
                                 <td>${sumMulti/data.sum}</td>
                             </tr>
                            `);
