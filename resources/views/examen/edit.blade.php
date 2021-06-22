@@ -13,7 +13,7 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Modifier Séance</h2>
+                <h2>Modifier examan</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('examen.index') }}"> Retour</a>
@@ -22,7 +22,7 @@
     </div>
 
 <div class="card push-top">
-  
+
 
   <div class="card-body">
     @if ($errors->any())
@@ -37,10 +37,17 @@
       <form method="post" action="{{ route('examen.update', $examen->id) }}">
         @csrf
         {{method_field('PUT')}}
-        
+
        <div class="form-group">
               <label for="date">Date</label>
               <input type="date" class="form-control" name="date" value="{{ $examen->date}}"/>
+          </div>
+          <div class="form-group col-md-12">
+              <select class="form-control" id="semseter" name="semseter">
+                  <option value="">Select semseter</option>
+                  <option value="1" {{$examen->semseter == 1 ? "selected" : ""}}>1</option>
+                  <option value="2" {{$examen->semseter == 2 ? "selected" : ""}}>2</option>
+              </select>
           </div>
        <div class="form-group col-md-4">
         <select class="form-control" id="annee_id" name="annee_id">
@@ -59,13 +66,13 @@
               <option value="">Selecte Classe</option>
           </select>
 
-          
+
 
       </div>
       <div class="form-group col-md-4">
         <select class="form-control" id="matiere_id" name="matiere_id">
         <option value="">Selecta Matière</option>
-        
+
         </select>
     </div>
           <button type="submit" class="btn btn-block btn-danger">mettre à jour</button>
@@ -77,7 +84,7 @@
 
 @section('scripts')
 <script>
- 
+
         $(function (){
             $('body').on('change','#annee_id',function(e){
                 var annee_id = e.target.value;

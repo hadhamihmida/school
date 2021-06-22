@@ -16,13 +16,17 @@ class exman extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table='examens';
-    protected $fillable=['date','classe_id','matiere_id'];
+    protected $fillable=[
+        'date',
+        'classe_id',
+        'matiere_id',
+        'semseter'];
 
     public function classe()
     {
         return $this->belongsTo(Classe::class);
     }
-                    
+
     public function matiere()
     {
         return $this->belongsTo(Matieres::class);

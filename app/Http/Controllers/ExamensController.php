@@ -16,7 +16,7 @@ class ExamensController extends Controller
      */
     public function index()
     {
-          
+
         $examens = exman::all()->load('matiere','classe.annee');
         //dd($examens);
         return view('examen.index', compact('examens'));
@@ -31,7 +31,7 @@ class ExamensController extends Controller
     public function create()
     {
         $annees = Annee::all();
-       
+
         return view('examen.create',compact('annees'));
     }
 
@@ -47,11 +47,11 @@ class ExamensController extends Controller
             'date' => 'required',
             'matiere_id' => 'required',
             'classe_id'=> 'required',
-           
+           'semseter'=>'required'
         ]);
 
        exman::create($request->all());
-   
+
         return redirect()->route('examen.index')
                         ->with('success','examen date creer avec succeés.');
     }
@@ -83,23 +83,24 @@ class ExamensController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param exman $examen
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, exman $examen)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'date' => 'required',
             'matiere_id' => 'required',
             'classe_id' => 'required',
+            'semseter'=>'required',
         ]);
-    
-        $examen->update($request->all());
-    
+
+        exman::findOrFail($id)->update($request->all());
+
         return redirect()->route('examen.index')
                         ->with('success','examen updated successfully');
-           
+
     }
 
     /**

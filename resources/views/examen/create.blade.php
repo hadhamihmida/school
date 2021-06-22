@@ -7,10 +7,10 @@
     <div class="card-body">
         <div class="form-row">
 
- 
- 
+
+
         <form method="post" action="{{ route('examen.store') }}">
-         
+
               @csrf
               <div class="form-row">
             <div class="form-group col-md-12">
@@ -32,9 +32,16 @@
             <div class="form-group col-md-12">
                 <select class="form-control" id="matiere_id" name="matiere_id">
                     <option value="">Select Matiere</option>
-                   
+
                 </select>
             </div>
+                  <div class="form-group col-md-12">
+                      <select class="form-control" id="semseter" name="semseter">
+                          <option value="">Select semseter</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                      </select>
+                  </div>
 
         <div class="form-group col-md-12">
         <label for="date">Date</label>
@@ -84,7 +91,7 @@
                     }
                 });
             });
-           
+
             $('#print').click(function(e){
                 $('table').printThis({
                     header: `

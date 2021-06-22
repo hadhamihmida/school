@@ -120,13 +120,21 @@ public function update( Request $request ,eleves $eleve){
    }
 
 
-   public function exmans(eleves $eleve){
-       $data=$eleve->load('exmans.matiere')->exmans()->get()->each(function ($item, $key){
+   public function exmans(eleves $eleve): \Illuminate\Http\JsonResponse
+   {
+       $data=$eleve->load('exmans.matiere')->exmans()->where('semseter','1')->get()->each(function ($item, $key){
+           $item->multi= $item->matiere->nombre*$item->pivot->note;
+       });
+       $data2=$eleve->load('exmans.matiere')->exmans()->get()->where('semseter','2')->each(function ($item, $key){
            $item->multi= $item->matiere->nombre*$item->pivot->note;
        });
       return response()->json([
-          'data'=>$data,
-          'sum'=>$data->pluck('matiere')->sum('nombre')
+          'data'=>[
+              'semseter_1'=>$data,
+              'semseter_2'=>$data2,
+          ],
+          'sum'=>$data->pluck('matiere')->sum('nombre'),
+          'sum2'=>$data2->pluck('matiere')->sum('nombre')
       ]);
    }
 }
